@@ -6,8 +6,6 @@
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 
-theme: architect
-
 title: Discovering ML & Embedded Systems
 description: This blog is meant to showcase the projects I do in my spare time, mainly related to ML, science, business and embedded systems.
 github_username: sdomoszlai13
@@ -23,7 +21,7 @@ use_math: true
 google_analytics:
 
 # Everything below here can be ignored, unless you want to change the theme entirely
-theme: minima
+theme: architect
 plugins:
   - jekyll-feed
   - jekyll-gist
