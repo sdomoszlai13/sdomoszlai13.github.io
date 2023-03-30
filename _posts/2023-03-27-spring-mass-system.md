@@ -1,5 +1,8 @@
 # Spring Mass System Simulation
 
+You may be asking: a spring mass what? Well, imagine you wanted to simulate the motion of a piece of elastic fabric hung up on a wall, or the motion of atoms in molecules (sometimes you want to, believe me). Such systems can be described by spring mass systems. These are systems that contain multiple bodies with mass that are connected by springs. Of course, the connections can be arbitrary and the "power" of the springs (the spring constant) can be different for every spring. There are also one or more fixtures we can tether the masses on, so tthey won't fall down.
+</br>
+</br>
 In this post we'll be looking at a simulation of a system of fixtures, masses, and springs in two dimensions. Fixtures and masses can be set up with initial coordinates and initial velocities (not for fixtures, of course). After setting the desired temporal length and the number of time steps, the simulation is run and a plot is created with the fixtures, masses, and the masses' trajectories. There's also an option to save the trajectories to a file.
 
 
