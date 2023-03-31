@@ -11,7 +11,9 @@ In this post we'll be looking at a simulation of a system of fixtures, masses, a
 A system of springs and masses can be described by a set of differential equations:
 
 
-In principle, these equations can be solved analytically. However, that's more of a maths problem than a software development problem. For the sake of simplicity, we're gonna solve the equations numerically with the help of the (forward) Euler method.
+In principle, these equations can be solved analytically. However, that's more of a maths problem than a software development problem. For the sake of simplicity, we're gonna solve the equations numerically with the help of the (forward) Euler method. To do this, we have to divide our simulation time into *n* discrete time steps. For every time step, the positions and velocities of all masses *m* are calculated as well as the force *F* acting on them. At every moment in time, these are given by
+
+/equations/
 
 ## Examples
 
@@ -19,7 +21,7 @@ Let's see what's possible with a basic simulation tool like this. First, we try 
 
 image
 
-Next, let's look at a nonelastic pendulum.
+Next, let's look at a non-elastic pendulum.
 
 image
 
