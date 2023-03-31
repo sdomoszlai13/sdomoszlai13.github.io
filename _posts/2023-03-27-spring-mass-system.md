@@ -4,7 +4,14 @@ You may be asking: a spring mass what? Well, imagine you wanted to simulate the 
 </br>
 </br>
 In this post we'll be looking at a simulation of a system of fixtures, masses, and springs in two dimensions. Fixtures and masses can be set up with initial coordinates and initial velocities (not for fixtures, of course). After setting the desired temporal length and the number of time steps, the simulation is run and a plot is created with the fixtures, masses, and the masses' trajectories. There's also an option to save the trajectories to a file.
+</br>
 
+## Physical background
+
+A system of springs and masses can be described by a set of differential equations:
+
+
+In principle, these equations can be solved analytically. However, that's more of a maths problem than a software development problem. For the sake of simplicity, we're gonna solve the equations numerically with the help of the (forward) Euler method.
 
 ## Examples
 
