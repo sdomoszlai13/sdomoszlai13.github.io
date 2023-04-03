@@ -8,12 +8,39 @@ In this post we'll be looking at a simulation of a system of fixtures, masses, a
 
 ## Physical background
 
-A system of springs and masses can be described by a set of differential equations:
+Consider a mass $m$ attached to a spring with a spring constant $k$ moving in 1D. Then, the equation of motion of the mass is:
+
+$m\ddot{x}(t) = -kx + mg$,
+
+where $x(t)$ is the position of the mass and $g$ is the gravitational acceleration. If two masses are coupled in series, the system can be described by a set of equations (omitting time dependence notation for simplicity):
+
+$m_1\ddot{x_1} = -k_1x_1 + k_2(x_2-x_1) + m_1g$, <br/>
+$m_2\ddot{x_2} = k_2(x_2-x_1) + m_2g$.
+
+If we allow the masses to move in 2D, the equations become
+
+$m_1\ddot{\vec{x_1}} = -k_1(||\vec{x_1}|| - l_1)\frac{\vec{x_1}}{||\vec{x_1}||} + k_2(||\vec{x_2} - \vec{x_1}|| - l_2)\frac{\vec{x_2} - \vec{x_1}}{||\vec{x_2} - \vec{x_1}||} + m_1\vec{g}$, <br/>
+$m_2\ddot{\vec{x_2}} = -k_2(||\vec{x_2} - \vec{x_1}|| - l_2)\frac{\vec{x_2} - \vec{x_1}}{||\vec{x_2} - \vec{x_1}||} + m_2\vec{g}$.
+
+A general system of springs and masses can be described by a similar set of equations. By solving the equations for $x(t)$, we can determine the trajectories of the masses. In principle, these equations can be solved analytically. However, that's more of a maths problem than a software development problem. For the sake of simplicity, we're gonna solve the equations numerically with the help of the (forward) Euler method. This is a quite simple method to solve differential equations and works as follows. <br/>
+
+Let's suppose we know the position $x(t)$ and the velocity $v(t)$ of a mass at the time $t$, as well as the force $F(t)$ acting on it. A small time $\Delta t$ later, at the time $t' = t + \Delta t$, we can say that approximately
+
+$x(t') = x(t) + v(t)\Delta t$, <br>
+$v(t') = v(t) + a(t)\Delta t = v(t) + \frac{F(t)}{m}\Delta t$.
 
 
-In principle, these equations can be solved analytically. However, that's more of a maths problem than a software development problem. For the sake of simplicity, we're gonna solve the equations numerically with the help of the (forward) Euler method. To do this, we have to divide our simulation time into *n* discrete time steps. For every time step, the positions and velocities of all masses *m* are calculated as well as the force *F* acting on them. At every moment in time, these are given by
+To make use of this algorithm, we have to divide our simulation time into $n$ discrete time steps which a time difference of $\Delta t$. For every time step, the positions and velocities of all masses $m_i$ are calculated as well as the force $F_i(t)$ acting on them. At every moment, these are given by
 
-/equations/
+
+
+and
+
+,
+
+respectively.
+
+
 
 ## Examples
 
