@@ -4,7 +4,7 @@ Today we're gonna take a look at solving the equations of motion for a spring ma
 <br>
 <br>
 The program we'll get to know runs a simulation of a system of fixtures, masses, and springs in two dimensions. Fixtures and masses can be set up with initial coordinates and initial velocities (not for fixtures, of course). After setting the desired temporal length and the number of time steps, the simulation is run and a plot is created with the fixtures, masses, and the masses' trajectories so we can see which way they went. There's also an option to save the trajectories to a file.
-</br>
+<br>
 
 {% include info.html text="The following paragraph is a bit technical. Feel free to dive into it but be warned: I'm sure you've never experienced it, but let me tell you that maths can cause some frustration." %}
 ## Physical background
@@ -25,7 +25,7 @@ $$m_1\ddot{\vec{x_1}} = -k_1(||\vec{x_1}|| - l_1)\frac{\vec{x_1}}{||\vec{x_1}||}
 
 $$m_2\ddot{\vec{x_2}} = -k_2(||\vec{x_2} - \vec{x_1}|| - l_2)\frac{\vec{x_2} - \vec{x_1}}{||\vec{x_2} - \vec{x_1}||} + m_2\vec{g}.$$
 
-A general system of springs and masses can be described by a similar set of equations. By solving the equations for $x(t)$, we can determine the trajectories of the masses. In principle, these equations can be solved analytically. However, that's more of a maths problem than a software development problem. For the sake of simplicity, we're gonna solve the equations numerically with the help of the (forward) Euler method. This is a quite simple method to solve differential equations and works as follows. <br/>
+A general system of springs and masses can be described by a similar set of equations. By solving the equations for $x(t)$, we can determine the trajectories of the masses. In principle, these equations can be solved analytically. However, that's more of a maths problem than a software development problem. For the sake of simplicity, we're gonna solve the equations numerically with the help of the (forward) Euler method. This is a quite simple method to solve differential equations and works as follows. <br>
 
 Let's suppose we know the position $x(t)$ and the velocity $v(t)$ of a mass at the time $t$, as well as the force $F(t)$ acting on it. A small time $\Delta t$ later, at the time $t' = t + \Delta t$, we can say that approximately
 
