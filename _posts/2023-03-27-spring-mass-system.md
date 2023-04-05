@@ -66,3 +66,7 @@ Double pendulums are actually quite fascinating because of their so-called chaot
 ![](/images/doub-pend-el.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (elastic double pendulum)")
 
 Isn't it amazing what a basic algorithm for solving differential equations is capable of?
+
+Of course, there are some pitfalls you have to avoid to get realistic results. Simulation time and the number of time steps is critical. There should be at least 1000 time steps for each second of simulation time, depending on expected velocities of the masses. Similarly, if the spring constant is increased, the number of time steps should also be increased. This is important because of higher velocities and accelerations. As the time steps are distributed equally on the time scale, calculated points on the trajectory are more spaced out if the velocity of a mass is higher. This can be seen in the image below.
+
+![](/images/zoom1.png "Points are more spaced out when a body is moving with a higher velocity")
