@@ -12,5 +12,13 @@ I wanted to build a weather station similar to those available commercially. The
 
 Temperature, pressure, and humidity are measured by a widely available combined **AHT20 + BMP280 sensor**. The former chip can measure temperature and humidity, while the latter can measure temperature and pressure. The two chips are built on a single board and have a common I2C breakout (more about that later). Such devices are available for around 3$ online.
 
-The measured values than can be displayed on a display, e.g. a 128 X 32 LCD, which I used.
+The measured values than can be displayed on a display, e.g. a 128 X 32 LCD, which I used. These are available for around 6$.
 
+The wireless communication between the two units is realized with the help of two nRF24L01 radio modules. These modules allow for wireless communication of 5-50 m, depending on the circumstances (walls are bad for range, obviously). One module goes for about 3$ online.
+
+Last but not least: the "brain" of the weather station: two Arduinos.
+
+{% include info.html text="**What is an Arduino?**
+<br>
+The Arduino platform is an 8-bit, user-friendly environment for hobby, ultra-fast prototyping and experimenting. There is a wide variety of boards available, ranging from the Arduino Nano with a flash memory of 32 kB and a clock speed of 16 MHz all the way up to the 32-bit, STM32-based Arduino G1 Wi-Fi with 2 MB of flash memory and a clock speed of 480 MHz.
+" %}
