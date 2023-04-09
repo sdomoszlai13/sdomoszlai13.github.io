@@ -43,4 +43,44 @@ The modules are connected to the Arduino using a prototyping PCB. The devices ar
 
 ## Software
   
-The software 
+The software is required to do the following tasks:
+  
+* make a measurement with the sensors and store the returned values
+* display measured values
+* transmit/receive measured values
+* monitor the state of a push button
+  
+To make the measurements, the *AHT20*, and the *Adafruit_BMP280* libraries were used for the two sensors.
+  
+  
+`// BASE STATION
+
+
+// Instantiate an AHT20 sensor
+AHT20 aht20;
+
+// Instantiate a BMP280 sensor
+Adafruit_BMP280 bmp280; // Use I2C interface
+Adafruit_Sensor *bmp_temp = bmp280.getTemperatureSensor();
+Adafruit_Sensor *bmp_pressure = bmp280.getPressureSensor();
+
+// Instantiate a display
+LiquidCrystal_I2C lcd(0x27,20,4);   // Set address to 0x27 for a 16 X 2 display
+
+// Instantiate a transceiver
+NRFLite _radio;
+const static uint8_t RADIO_ID = 0;              // This transceiver
+const static uint8_t DESTINATION_RADIO_ID = 1;  // Other transceiver
+const static uint8_t PIN_RADIO_CE = 9;
+const static uint8_t PIN_RADIO_CSN = 10;
+
+struct RadioPacket  // Packet to be received
+{
+    float temp;
+    float pres;
+    float hum;
+};
+
+enum TypeOfVal {temp, pres, hum}; // Determines which display function to use
+
+`
