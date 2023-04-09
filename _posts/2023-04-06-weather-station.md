@@ -50,10 +50,11 @@ The software is required to do the following tasks:
 * transmit/receive measured values
 * monitor the state of a push button
   
-To make the measurements, the *AHT20*, and the *Adafruit_BMP280* libraries were used for the two sensors.
+To make the measurements, the *Sparkfun AHT20*, and the *Adafruit BMP280* libraries were used for the two sensors. To drive the display, the libraries *LiquidCrystalI2C* and *Adafruit SSD1306* were used.
   
   
-`// BASE STATION
+```c++
+// BASE STATION
 
 
 // Instantiate an AHT20 sensor
@@ -82,5 +83,5 @@ struct RadioPacket  // Packet to be received
 };
 
 enum TypeOfVal {temp, pres, hum}; // Determines which display function to use
+```
 
-`
