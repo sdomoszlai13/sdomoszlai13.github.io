@@ -61,6 +61,9 @@ When writing the code for the base station, the first step is to do the setup re
 To keep communication between the two units simple, I created a `struct` that contains three variables of the type `float `: *temp*, *pres*, and *hum*, that store the last measured values of the temperature, pressure, and humidity, respectively. The outdoor unit regulary sends a single instance of this `struct` to the base station.
   
 A major challenge in implementing the base station code was figuring out the best way to write the function printing data on the display.
+The first thing to note here is that the LCD used isn't big enough to display a pair (indoor and outdoor) of temperatures, pressures, and humidities at the same time. For this reason, the LCD works the following way: first, it shows the indoor and outdoor temperatures in separate lines, next it shows the indoor and outdoor pressures, and last it shows  the indoor and outdoor humidities.
+  
+However, these values have different lengths, different precisions and different units. 
   
   
 ```c++
