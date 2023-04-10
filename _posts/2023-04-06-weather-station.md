@@ -56,7 +56,11 @@ To make the measurements, the *Sparkfun AHT20*, and the *Adafruit BMP280* librar
   
 When using peripheral devices with microcomputers like, you can choose from a number of communication protocols to use: SPI, I2C, UART etc. Each of these have their advantages and disadvantages, which won't be discussed here in detail. As I2C is a bit slower than than the others, but only requires 2 wires (besides VCC and GND), this protocol is used with the AHT20 and the BMP280 sensors, as well as with the LCD. However, as the nRF24L01 doesn't have I2C available, communications happen with the help of SPI. The devices are wired up accordingly, as shown in Fig. x.
   
-When writing 
+When writing the code for the base station, the first step is to do the setup required to get the sensors, the transceiver and the LCD up and running. The details are rather uninteresting and won't be discussed here in-depth. One thing to note is that depending on the manufacturer of your LCD, the default I2C address of your LCD can be any integer between 0x20 and 0x27. This address can be changed by soldering jumpers on the back of the LCD. This way, up to eight such LCDs can be used with one Arduino. In any case, make sure the display address matches the address in your software setup.
+  
+To keep communication between the two units simple, I created a `struct` that contains three variables of the type `float `: *temp*, *pres*, and *hum*, that store the last measured values of the temperature, pressure, and humidity, respectively. The outdoor unit regulary sends a single instance of this `struct` to the base station.
+  
+A major challenge in implementing the base station code was figuring out the best way to write the function printing data on the display.
   
   
 ```c++
