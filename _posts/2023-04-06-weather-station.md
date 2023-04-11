@@ -152,4 +152,39 @@ void printData(float indoor_val, float outdoor_val, TypeOfVal type_of_val){
 The remote unit's display library is more sophisticated and hence, no tricks were required to print the values as with the base station. However, as the screen of the remote unit won't be of interest about 99.9% of the time, I decided it should be turned off by default. Only a button press should activate the LCD. This feature is implemented with a press button that's connected in series with a 47 k$\Omega$ resistor between $V_{CC}$ and $GND$. Such push buttons usually need to be debounced so a single button press doesn't produce multiple rising and falling edges. However, as I determined using an oscilloscope, this setup works reliably without sotware or hardware debouncing, luckily.
   
 
-The software challenge with the remote unit was the detection of the button press. The Arduino `loop()` runs forever, and in this case, makes measurements, and sends data. The state of the button could also be monitored in the `loop()` function to see if the button was pressed. There's just one problem: what if the button is pressed when the processor is busy sending data or doing measurements? Luckily, there's a concept in microcontroller technology just for this use case: the interrupt service routine (ISR).
+The software challenge with the remote unit was the detection of the button press. The Arduino `loop()` runs forever, and in this case, makes measurements, and sends data. The state of the button could also be monitored in the `loop()` function to see if the button was pressed. There's just one problem: what if the button is pressed when the processor is busy sending data or doing measurements? Luckily, there's a concept in microcontroller technology just for this problem: the interrupt service routine (ISR).
+  
+An ISR can be called by an event, e.g., a change in a variable or a change in the logic level of an input pin. So, I connected the push button to the digital pin D2 of the Arduino and monitored it's state in an ISR. Too easy, right? Right: as always, *The devil is in the details*. An ISR interrupts every process that the processor is working on and can cause serious trouble if it runs for a significant amount of time. For this reason, ISRs should be kept as short as possible. Also, function calls can only be made without passing arguments and no return values are allowed. Wanna use `millis()` or `micros()` to measure time intervals or print something on the serial monitor? Sorry, not possible inside an ISR! I bet now you'd wanna  finish the ISR as soon as possible even if it weren't be best practice...
+  
+The best way to monitor a push button with an ISR goes for the reasons mentioned above as follows:
+  * let the ISR be called when a rising/falling edge is detected at the push button
+  * let the ISR assign a new value to a variable used to monitor the push button state
+  * compare the variable to a reference value in the `loop()` function.
+  
+This way, the ISR is kept as short as possible.
+  
+```c++
+  
+volatile byte button_pressed = LOW; // Global variable for the ISR to monitor button
+const byte button_compare = HIGH;   // Byte to compare button_pressed to
+const byte interrupt_pin = 2;       // Using digital pin 2 as interrupt pin
+  
+// Setup interrupt service routine
+pinMode(interrupt_pin, INPUT_PULLUP);
+attachInterrupt(digitalPinToInterrupt(interrupt_pin), buttonPressed, FALLING);
+  
+// Print values on display if button is pressed
+if (button_pressed == button_compare)
+{
+    printData(temp, pres, hum);
+    button_pressed = LOW;
+    Serial.println("Button pressed, display activated");
+}
+
+// ISR
+void buttonPressed(){
+
+    button_pressed = HIGH;
+}
+  
+```
