@@ -58,7 +58,33 @@ When using peripheral devices with microcomputers like, you can choose from a nu
   
 When writing the code for the base station, the first step is to do the setup required to get the sensors, the transceiver and the LCD up and running. The details are rather uninteresting and won't be discussed here in-depth. One thing to note is that depending on the manufacturer of your LCD, the default I2C address of your LCD can be any integer between 0x20 and 0x27. This address can be changed by soldering jumpers on the back of the LCD. This way, up to eight such LCDs can be used with one Arduino. In any case, make sure the display address matches the address in your software setup.
   
-To keep communication between the two units simple, I created a `struct` that contains three variables of the type `float `: *temp*, *pres*, and *hum*, that store the last measured values of the temperature, pressure, and humidity, respectively. The outdoor unit regulary sends a single instance of this `struct` to the base station.
+To keep communication between the two units simple, I created a `struct` that contains three variables of the type `float `: *temp*, *pres*, and *hum*, that store the last measured values of the temperature, pressure, and humidity, respectively.
+  
+```c++
+struct RadioPacket  // Packet to be received
+{
+    float temp;
+    float pres;
+    float hum;
+};
+```
+  
+The outdoor unit regulary sends a single instance of this `struct` (RadioPacket) to the base station, which receives it as you can see below.
+  
+```c++
+RadioPacket receiveData(){
+
+    RadioPacket _radioData = {-99.0, -99.0, -99.0};
+
+    if (_radio.hasData())
+    {
+        _radio.readData(&_radioData);
+    }
+
+    return _radioData;
+}  
+
+```
   
 A major challenge in implementing the base station code was figuring out the best way to write the function printing data on the display.
 The first thing to note here is that the LCD used isn't big enough to display a pair (indoor and outdoor) of temperatures, pressures, and humidities at the same time. For this reason, the LCD works the following way: first, it shows the indoor and outdoor temperatures in separate lines, next it shows the indoor and outdoor pressures, and last it shows  the indoor and outdoor humidities.
@@ -115,4 +141,6 @@ void printData(float indoor_val, float outdoor_val, TypeOfVal type_of_val){
     }
 }
 ```
+  
+
 
