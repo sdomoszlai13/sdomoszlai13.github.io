@@ -63,38 +63,56 @@ To keep communication between the two units simple, I created a `struct` that co
 A major challenge in implementing the base station code was figuring out the best way to write the function printing data on the display.
 The first thing to note here is that the LCD used isn't big enough to display a pair (indoor and outdoor) of temperatures, pressures, and humidities at the same time. For this reason, the LCD works the following way: first, it shows the indoor and outdoor temperatures in separate lines, next it shows the indoor and outdoor pressures, and last it shows  the indoor and outdoor humidities.
   
-However, these values have different lengths, different precisions and different units. 
+However, these values have different lengths, different precisions and different units. This problem was solved using an `enum` containing the strings "temp", "pres", and "hum". The function that prints the values on the LCD determines if a temperature, a pressure, or a humidity should be printed and prints units accordingly.
   
   
 ```c++
-// BASE STATION
+  
+void printData(float indoor_val, float outdoor_val, TypeOfVal type_of_val){
 
+    if (type_of_val == temp)
+    {
+        lcd.setCursor(4,0);
+        lcd.print(indoor_val);
+        lcd.setCursor(10,0);
+        lcd.print((char)223);
+        lcd.print("C");
+        lcd.setCursor(4,1);
+        lcd.print(outdoor_val);
+        lcd.setCursor(10,1);
+        lcd.print((char)223);
+        lcd.print("C");
+    }
 
-// Instantiate an AHT20 sensor
-AHT20 aht20;
+    else if (type_of_val == pres)
+    {
+        lcd.setCursor(3,0);
+        lcd.print(indoor_val);
+        lcd.setCursor(9,0);
+        lcd.print(" hPa");
+        lcd.setCursor(3,1);
+        lcd.print(outdoor_val);
+        lcd.setCursor(9,1);
+        lcd.print(" hPa");
+    }
 
-// Instantiate a BMP280 sensor
-Adafruit_BMP280 bmp280; // Use I2C interface
-Adafruit_Sensor *bmp_temp = bmp280.getTemperatureSensor();
-Adafruit_Sensor *bmp_pressure = bmp280.getPressureSensor();
+    else if (type_of_val == hum)
+    {
+        lcd.setCursor(5,0);
+        lcd.print(indoor_val);
+        lcd.setCursor(10,0);
+        lcd.print("%");
+        lcd.setCursor(5,1);
+        lcd.print(outdoor_val);
+        lcd.setCursor(10,1);
+        lcd.print("%");
+    }
 
-// Instantiate a display
-LiquidCrystal_I2C lcd(0x27,20,4);   // Set address to 0x27 for a 16 X 2 display
-
-// Instantiate a transceiver
-NRFLite _radio;
-const static uint8_t RADIO_ID = 0;              // This transceiver
-const static uint8_t DESTINATION_RADIO_ID = 1;  // Other transceiver
-const static uint8_t PIN_RADIO_CE = 9;
-const static uint8_t PIN_RADIO_CSN = 10;
-
-struct RadioPacket  // Packet to be received
-{
-    float temp;
-    float pres;
-    float hum;
-};
-
-enum TypeOfVal {temp, pres, hum}; // Determines which display function to use
+    else
+    {
+        lcd.setCursor(0,1);
+        lcd.print("Unknown data type!");
+    }
+}
 ```
 
