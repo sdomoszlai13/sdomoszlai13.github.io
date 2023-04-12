@@ -33,8 +33,7 @@ Last but not least: the "brain" of the weather station, which consists of two Ar
 
 {% include info.html text="<b>What is an Arduino?<b>
 <br>
-The Arduino platform is an 8-bit, user-friendly environment for hobby, ultra-fast prototyping and experimenting. There is a wide variety of boards available, ranging from the Arduino Nano with a flash memory of 32 kB and a clock speed of 16 MHz all the way up to the 32-bit, STM32-based Arduino G1 Wi-Fi with 2 MB of flash memory and a clock speed of 480 MHz.
-" %}
+The Arduino platform is an 8-bit, user-friendly environment for hobby, ultra-fast prototyping and experimenting. There is a wide variety of boards available, ranging from the Arduino Nano with a flash memory of 32 kB and a clock speed of 16 MHz all the way up to the 32-bit, STM32-based Arduino G1 Wi-Fi with 2 MB of flash memory and a clock speed of 480 MHz." %}
 
 Although ESP32-based or STM32-based boards would be a great option too, I went with the Arduinos as neither Wi-Fi, nor a significant computing capacity is required for this project.
   
