@@ -45,28 +45,28 @@ To make use of this algorithm, we have to divide our simulation time into $n$ di
 
 Let's see what's possible with a basic simulation tool like this. First, we try to simulate a vertically oscillating mass, also known as a harmonic oscillator.
 
-![](/images/harm-osc.png "Mass attached to vertical spring (harmonic oscillator)")
+![](/images/spring-mass-system-simulator/harm-osc.png "Mass attached to vertical spring (harmonic oscillator)")
 
 Next, let's look at a non-elastic pendulum.
 
-![](/images/swing.png "Mass attached to a rigid, swinging, initially vertical spring")
+![](/images/spring-mass-system-simulator/swing.png "Mass attached to a rigid, swinging, initially vertical spring")
 
 So far, so good. There's nothing special going on here.
 
 Now, let's see what happens if we build an elastic pendulum.
 
-![](/images/el-pend.png "Mass attached to an elastic, swinging, initially vertical spring")
+![](/images/spring-mass-system-simulator/el-pend.png "Mass attached to an elastic, swinging, initially vertical spring")
 
 Nice! Now we're gonna take a look at a double pendulum.
 
-![](/images/doub-pend-rig.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (inelastic double pendulum)")
+![](/images/spring-mass-system-simulator/doub-pend-rig.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (inelastic double pendulum)")
 
 Double pendulums are actually quite fascinating because of their so-called chaotic behavior. This means that for slight variations in the initial conditions, the resulting trajectories can be significantly different from one another. Such systems can be described with the help of chaos theory. But now, let's create a bit more chaos, shall we? Here's an elastic double pendulum.
 
-![](/images/doub-pend-el.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (elastic double pendulum)")
+![](/images/spring-mass-system-simulator/doub-pend-el.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (elastic double pendulum)")
 
 Isn't it amazing what a basic algorithm for solving differential equations is capable of?
 
 Of course, there are some pitfalls you have to avoid to get realistic results. Simulation time and the number of time steps is critical. There should be at least 1000 time steps for each second of simulation time, depending on expected velocities of the masses. Similarly, if the spring constant is increased, the number of time steps should also be increased. This is important because of higher velocities and accelerations. As the time steps are distributed equally on the time scale, calculated points on the trajectory are more spaced out if the velocity of a mass is higher. This can be seen in the image below.
 
-![](/images/zoom1.png "Points are more spaced out when a body is moving with a higher velocity")
+![](/images/spring-mass-system-simulator/zoom1.png "Points are more spaced out when a body is moving with a higher velocity")
