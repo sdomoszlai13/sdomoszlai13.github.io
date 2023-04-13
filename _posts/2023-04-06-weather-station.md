@@ -8,9 +8,9 @@ This journey begins on a Tuesday morning as I am looking at our certainly cute b
 I wanted to build a weather station similar to those available commercially. The system consists of a base station that can be put on a shelf or table indoor and a remote unit that can be placed outdoor, though it should not come in direct contact with water. Both units measure temperature, pressure and humidity. The remote unit transmits the data to the base station that displays both indoor and outdoor measurements. The remote unit features a display too, which is off by default and displays current measurement values for a few seconds when the button on the unit is pressed. The display of the base station is always on.
 
 
-## Hardware
+## HARDWARE
 
-The hardware has to complete the following tasks:
+The hardware is required to:
 
 Base station:
 * measure temperature, pressure and humidity
@@ -23,11 +23,11 @@ Remote unit:
 * display measured values on an LCD if a button is pressed
 
 
-Temperature, pressure, and humidity are measured by a widely available combined **AHT20 + BMP280 sensor**. The former chip can measure temperature and humidity, while the latter can measure temperature and pressure. The two chips are built on a single board and have a common I2C breakout (more about that later). Such devices are available for around 3$ online.
+Temperature, pressure, and humidity are measured by a widely available combined *AHT20 + BMP280 sensor*. The former chip can measure temperature and humidity, while the latter can measure temperature and pressure. The two chips are built on a single board and have a common I2C breakout (more about that later). Such devices are available for around 3$ online.
 
-The measured values than can be displayed on a display, e.g. a 128 X 32 LCD, which I used. These are available for around 6$.
+The measured values than can be displayed on a screen, e.g. a *128 X 32 LCD*, which I used. These are available for around 6$ online.
 
-The wireless communication between the two units is realized with the help of two nRF24L01 radio modules. These modules allow for wireless communication of 5-50 m, depending on the circumstances (walls are bad for range, obviously). One module goes for about 3$ online.
+The wireless communication between the two units is realized with the help of two *nRF24L01* radio modules. These modules allow for wireless communication of 5-50 m, depending on the circumstances (walls are bad for range, obviously). One module goes for about 3$ online.
 
 Last but not least: the "brain" of the weather station, which consists of two Arduinos.
 
@@ -38,7 +38,7 @@ Although ESP32-based or STM32-based boards would be a great option too, I went w
 The modules are connected to the Arduino using a prototyping PCB. The devices are packaged in a 3D printed housing (designed and printed by the author too).
   
 
-## Software
+## SOFTWARE
   
 The software is required to do the following tasks:
   
@@ -187,6 +187,12 @@ void buttonPressed(){
 ```
 
 
-### Case
+# CASE
 
-The case is a custom-made, 3D printed part. I designed it myself to fit my needs. There's nothing special here; it's a case that allows a PCB and an LCD to be screwed in, a button to be glued in and a little pocket for the battery holder.
+The case is a custom-made, 3D printed part. I designed it myself to fit my needs. There's nothing special here; it's a case that allows a PCB and an LCD to be screwed in, a button to be glued in and a little pocket for the battery holder. Some pictures depicting the cases are shown below.
+
+![](/images/case-top.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (inelastic double pendulum)")
+
+![](/images/case-bottom.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (inelastic double pendulum)")
+
+![](/images/case-both.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (inelastic double pendulum)")
