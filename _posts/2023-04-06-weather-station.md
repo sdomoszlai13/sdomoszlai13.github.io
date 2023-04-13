@@ -191,8 +191,8 @@ void buttonPressed(){
 
 The case is a custom-made, 3D printed part. I designed it myself to fit my needs. There's nothing special here; it's a case that allows a PCB and an LCD to be screwed in, a button to be glued in and a little pocket for the battery holder. Some pictures depicting the cases are shown below.
 
-![](/images/spring-mass-system-simulator/case-top.png "Top part of the base station case")
+![](/images/weather-station/case-top.png "Top part of the base station case")
 
-![](/images/spring-mass-system-simulator/case-bottom.png "Bottom part of the base station case")
+![](/images/weather-station/case-bottom.png "Bottom part of the base station case")
 
-![](/images/spring-mass-system-simulator/case-both.png "Remote unit case")
+![](/images/weather-station/case-both.png "Remote unit case")
