@@ -191,8 +191,8 @@ void buttonPressed(){
 
 The case is a custom-made, 3D printed part. I designed it myself to fit my needs. There's nothing special here; it's a case that allows a PCB and an LCD to be screwed in, a button to be glued in and a little pocket for the battery holder. Some pictures depicting the cases are shown below.
 
-![](/images/case-top.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (inelastic double pendulum)")
+![](/images/spring-mass-system-simulator/case-top.png "Top part of the base station case")
 
-![](/images/case-bottom.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (inelastic double pendulum)")
+![](/images/spring-mass-system-simulator/case-bottom.png "Bottom part of the base station case")
 
-![](/images/case-both.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (inelastic double pendulum)")
+![](/images/spring-mass-system-simulator/case-both.png "Remote unit case")
