@@ -1,4 +1,4 @@
-# Spring Mass System Simulation
+# Spring Mass System Simulator
 
 Today we're gonna take a look at solving the equations of motion for a spring mass system. Now, you may be asking: solving a what? Well, imagine you wanted to simulate the motion of a piece of elastic fabric hung up on a wall, or the motion of atoms in molecules (and believe me, sometimes you $do$ want to). Such systems can be described by spring mass systems. These are systems that contain multiple bodies with mass that are connected by springs. Of course, the connections can be arbitrary and the "stiffness" of the springs (the spring constant) can be different for every spring. There are also one or more fixtures we can tether the masses on, so they won't fall down.
 <br>
