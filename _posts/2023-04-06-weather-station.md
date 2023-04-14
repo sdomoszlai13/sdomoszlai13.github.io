@@ -49,12 +49,12 @@ The software is required to do the following tasks:
   
 To make the measurements, the *Sparkfun AHT20*, and the *Adafruit BMP280* libraries were used for the two sensors. To drive the display, the libraries *LiquidCrystalI2C* and *Adafruit SSD1306* were used. To control the transceiver, the *NRFLite* library was used.
   
-### Choosing a communication protocol
+### Choosing a Communication Protocol
   
 When using peripheral devices with microcomputers like, you can choose from a number of communication protocols to use: SPI, I2C, UART etc. Each of these have their advantages and disadvantages, which won't be discussed here in detail. As I2C is a bit slower than than the others, but only requires 2 wires (besides VCC and GND), this protocol is used with the AHT20 and the BMP280 sensors, as well as with the LCD. However, as the nRF24L01 doesn't have I2C available, communications happen with the help of SPI. The devices are wired up accordingly, as shown in Fig. x.
 
 
-### Base station code highlights
+### Base Station Code Highlights
   
 When writing the code for the base station, the first step is to do the setup required to get the sensors, the transceiver and the LCD up and running. The details are rather uninteresting and won't be discussed here in-depth. One thing to note is that depending on the manufacturer of your LCD, the default I2C address of your LCD can be any integer between 0x20 and 0x27. This address can be changed by soldering jumpers on the back of the LCD. This way, up to eight such LCDs can be used with one Arduino. In any case, make sure the display address matches the address in your software setup.
   
@@ -144,7 +144,7 @@ void printData(float indoor_val, float outdoor_val, TypeOfVal type_of_val){
 ```
 
 
-### Remote unit code highlights
+### Remote Unit Code Highlights
   
 The remote unit's display library is more sophisticated and hence, no tricks were required to print the values as with the base station. However, as the screen of the remote unit won't be of interest about 99.9% of the time, I decided it should be turned off by default. Only a button press should activate the LCD. This feature is implemented with a press button that's connected in series with a 47 k$\Omega$ resistor between $V_{CC}$ and $GND$. Such push buttons usually need to be debounced so a single button press doesn't produce multiple rising and falling edges. However, as I determined using an oscilloscope, this setup works reliably without sotware or hardware debouncing, luckily.
   
@@ -196,3 +196,5 @@ The case is a custom-made, 3D printed part. I designed it myself to fit my needs
 ![](/images/weather-station/case-bottom.png "Bottom part of the base station case")
 
 ![](/images/weather-station/case-both.png "Remote unit case")
+
+The case was designed in Fusion360 and printed with my Creality Ender 3 from PLA. M3 screws fit can be screwed into the holes.
