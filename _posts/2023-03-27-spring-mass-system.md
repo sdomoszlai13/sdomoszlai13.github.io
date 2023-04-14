@@ -10,7 +10,7 @@ The program we'll get to know runs a simulation of a system of fixtures, masses,
 {% include info.html text="The following paragraph is a bit technical. Feel free to dive into it but be warned: I'm sure you've never experienced it, but let me tell you that maths can cause some frustration." %}
 
 
-## Physical background
+## Physical Background
 
 Consider a mass $m$ attached to a spring with a spring constant $k$ moving in 1D. Then, the equation of motion of the mass is:
 
