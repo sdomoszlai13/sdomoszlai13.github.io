@@ -1,6 +1,6 @@
 # Simple Arduino-based Weather Station
 
-*See also: why buy a professional weather station for 30$ if you can build your own for 40$, although with less functionality and more frustration?*
+*Also known as: building your own weather station for 40$ instead of buying a professional one for 30$ offering more functionality and less frustration.
 
 The screen of the lovely weather station with a backlit sun and clouds, purchased a few weeks ago from Aliexpress for 15$, reads (as ever so often): "Indoor temperature: 20.6 C, indoor humidity: 56%. Outdoor temperature: -.-- C, outdoor humidty: --%".
 This journey begins on a Tuesday morning as I am looking at our certainly cute but not too reliable weather station. The base station lost connection to the outdoor unit - again. "Why not build your own then?", I said to myself, and so I did.
@@ -48,6 +48,7 @@ The software is required to do the following tasks:
 * monitor the state of a push button
   
 To make the measurements, the *Sparkfun AHT20*, and the *Adafruit BMP280* libraries were used for the two sensors. To drive the display, the libraries *LiquidCrystalI2C* and *Adafruit SSD1306* were used. To control the transceiver, the *NRFLite* library was used.
+You can find the complete code for both the base station and the remote unit in my GitHub repository: https://github.com/sdomoszlai13/weather-station.
   
 ### Choosing a Communication Protocol
   
@@ -186,7 +187,6 @@ void buttonPressed(){
   
 ```
 
-
 # CASE
 
 The case is a custom-made, 3D printed part. I designed it myself to fit my needs. There's nothing special here; it's a case that allows a PCB and an LCD to be screwed in, a button to be glued in and a little pocket for the battery holder. Some pictures depicting the cases are shown below.
@@ -197,4 +197,13 @@ The case is a custom-made, 3D printed part. I designed it myself to fit my needs
 
 ![](/images/weather-station/case-both.png "Remote unit case")
 
+<br>
+<br>
+
 The case was designed in Fusion360 and printed with my Creality Ender 3 from PLA. M3 screws fit can be screwed into the holes.
+
+## Summary
+
+A home-made weather station is a nice project to experiment with different sensors and transceivers. I'd say the software part is quite straight forward. The hardware part requires a bit more planning. A 3D printer certainly helps with the project.
+
+You can find the complete code for both the base station and the remote unit in my GitHub repository: https://github.com/sdomoszlai13/weather-station.
