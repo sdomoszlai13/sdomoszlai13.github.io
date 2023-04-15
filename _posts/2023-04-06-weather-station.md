@@ -2,6 +2,8 @@
 
 *Also known as: building your own weather station for 40$ instead of buying a professional one for 30$ offering more functionality and less frustration.*
 
+![](/images/weather-station/.png "The finished weather station")
+
 The screen of the lovely weather station with a backlit sun and clouds, purchased a few weeks ago from Aliexpress for 15$, reads (as ever so often): "Indoor temperature: 20.6 C, indoor humidity: 56%. Outdoor temperature: -.-- C, outdoor humidty: --%".
 This journey begins on a Tuesday morning as I am looking at our certainly cute but not too reliable weather station. The base station lost connection to the outdoor unit - again. "Why not build your own then?", I said to myself, and so I did.
 
@@ -36,6 +38,11 @@ Last but not least: the "brain" of the weather station, which consists of two Ar
 Although ESP32-based or STM32-based boards would be a great option too, I went with the Arduinos as neither Wi-Fi, nor a significant computing capacity is required for this project.
   
 The modules are connected to the Arduino using a prototyping PCB. The devices are packaged in a 3D printed housing (designed and printed by the author too).
+
+![](/images/weather-station/.png "The assembled base station")
+
+
+![](/images/weather-station/.png "The assembled remote unit")
   
 
 ## SOFTWARE
