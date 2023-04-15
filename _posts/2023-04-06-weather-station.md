@@ -147,7 +147,7 @@ void printData(float indoor_val, float outdoor_val, TypeOfVal type_of_val){
 
 ### Remote Unit Code Highlights
   
-The remote unit's display library is more sophisticated and hence, no tricks were required to print the values as with the base station. However, as the screen of the remote unit won't be of interest about 99.9% of the time, I decided it should be turned off by default. Only a button press should activate the LCD. This feature is implemented with a press button that's connected in series with a 47 k$\Omega$ resistor between $V_{CC}$ and $GND$. Such push buttons usually need to be debounced so a single button press doesn't produce multiple rising and falling edges. However, as I determined using an oscilloscope, this setup works reliably without sotware or hardware debouncing (see section **Bonus Material: Investigating Push Button Bouncing** ath the end of this post for details).
+The remote unit's display library is more sophisticated and hence, no tricks were required to print the values as with the base station. However, as the screen of the remote unit won't be of interest about 99.9% of the time, I decided it should be turned off by default. Only a button press should activate the LCD. This feature is implemented with a press button that's connected in series with a 47 kΩ resistor between $V_{CC}$ and $GND$. Such push buttons usually need to be debounced so a single button press doesn't produce multiple rising and falling edges. However, as I determined using an oscilloscope, this setup works reliably without sotware or hardware debouncing, at least when using the fallling edge as the ISR trigger (see section **Bonus Material: Investigating Push Button Bouncing** at the end of this post for details).
   
 
 The software challenge with the remote unit was the detection of the button press. The Arduino `loop()` runs forever, and in this case, makes measurements, and sends data. The state of the button could also be monitored in the `loop()` function to see if the button was pressed. There's just one problem: what if the button is pressed when the processor is busy sending data or doing measurements? Luckily, there's a concept in microcontroller technology just for this problem: the interrupt service routine (ISR).
@@ -187,6 +187,7 @@ void buttonPressed(){
   
 ```
 
+
 ## CASE
 
 The case is a custom-made, 3D printed part. I designed it myself to fit my needs. There's nothing special here; it's a case that allows a PCB and an LCD to be screwed in, a button to be glued in and a little pocket for the battery holder. Some pictures depicting the cases are shown below.
@@ -202,8 +203,44 @@ The case is a custom-made, 3D printed part. I designed it myself to fit my needs
 
 The case was designed in Fusion360 and printed with my Creality Ender 3 from PLA. M3 screws fit can be screwed into the holes.
 
+
 ## Summary
 
 A home-made weather station is a nice project to experiment with different sensors and transceivers. I'd say the software part is quite straight forward. The hardware part requires a bit more planning. A 3D printer certainly helps with the project.
 
 You can find the complete code for both the base station and the remote unit in my GitHub repository: https://github.com/sdomoszlai13/weather-station.
+
+
+## Bonus Material: Investigating Push Button Bouncing
+
+Push buttons have a purely mechanical operating principle. When the plastic rod is pressed, an electrical contant is made between the pins of the button. Although it can't be felt by the user, the pushed vibrates on the contact plate before coming to a rest. This lasts fractions of a second but can cause serious trouble in digital circuits, as a single button press may seem to be multiple successive button presses to the electrical circuit. To prevent this behavior, mechanical precautions (e.g., a capacitor) can be taken or software tweaks (e.g., a delay after every buttton push) be made. For more details, take a look at https://docs.arduino.cc/built-in-examples/digital/Debounce.
+
+Another aspect to consider is whether to use falling edges, rising edges, or both as triggers. In this case, only the fact that the button was pushed is of interest. Therefore, triggering on only one of them is satisfactory. Now, which one is more reliable to use, you ask?
+
+One terminal of the push button is connected to $V_{CC}$ (in this case, 5 V) through a 100 kΩ resistor, and the other one to $GND$. Probing at the former terminal, we measure 5 V as long as the button is not pushed and 0 V when it is pushed.
+
+![](/images/weather-station/SDS00001.png "Falling edge and successive rising edge after pushing the button and releasing it. Time scale: 50 ms")
+
+Both the rising and the falling edges look perfect, one is tempted to look no further and use either one to trigger. However, as the reader is certainly smarter than most others, we do look further.
+
+![](/images/weather-station/SDS00006.png "Falling edge after pushing the button. Time scale: 50 µs")
+
+The above image has a time scale resolution 1,000 times finer than the above picture. The falling edge looks perfect, as before.
+
+![](/images/weather-station/SDS00009.png "Rising edge after releasing the button. Time scale: 50 µs")
+
+What happened here? Well, the rising edge lasts about 10 µs, which is acceptable as the Arduino is probably never fast enough for this delay to cause trouble. Nevertheless, it's worth noting that there's a significant difference in the rise time and the fall time. Let's zoom in even further to see if our perfect falling edge is perfect indeed.
+
+![](/images/weather-station/SDS000011.png "Rising edge after releasing the button. Time scale: 5 µs")
+
+Here, we can see even better how the rising edge is in fact an exponential function, probably caused by some capacitance in the circuit (10 times finer time scale than above).
+
+![](/images/weather-station/SDS000013.png "Falling edge after pressing the button. Time scale: 5 µs")
+
+At this time scale, we're beginning to see the real nature of the falling edge too. Still, we are at a 1,000 finer time scale compared to the time scale where the rising edge began to look like an exponential curve. Using the falling edge as a  trigger is therefore absolutely safe.
+
+![](/images/weather-station/SDS000019.png "Falling edge after pressing the button. Time scale: 50 ns")
+
+Finally, at 50 ns, the exponential voltage change is fully revealed at the falling edge too. In a low-freqency application like push buttons, this is perfectly fine and won't cause any troubles. However, it's interesting to note that modern CPUs are working with clock speeds with frequencies in the order of GHz, which means periods on the order of ns. This means that even instantaneous metal contact switches wouldn't be fast enough to build modern CPUs. Wonders of technology...
+
+
