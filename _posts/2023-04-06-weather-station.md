@@ -1,6 +1,6 @@
 # Simple Arduino-based Weather Station
 
-*Also known as: building your own weather station for 40$ instead of buying a professional one for 30$ offering more functionality and less frustration.*
+*Also known as: building your own weather station instead of buying a professional one cheaper, offering more functionality and less frustration.*
 
 ![](/images/weather-station/finished-both.png "The finished weather station. Please note that the base station was has just been placed outdoor and shows a higher temperature than the remote unit for this reason")
 
