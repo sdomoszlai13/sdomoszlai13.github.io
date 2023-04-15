@@ -39,10 +39,10 @@ Although ESP32-based or STM32-based boards would be a great option too, I went w
   
 The modules are connected to the Arduino using a prototyping PCB. The devices are packaged in a 3D printed housing (designed and printed by the author too).
 
-![](/images/weather-station/.png "The assembled base station")
+![](/images/weather-station/finished-base-station-inside.png "The assembled base station")
 
 
-![](/images/weather-station/.png "The assembled remote unit")
+![](/images/weather-station/finished-remote-unit-inside.png "The assembled remote unit")
   
 
 ## SOFTWARE
