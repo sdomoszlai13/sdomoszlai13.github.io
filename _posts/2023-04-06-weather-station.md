@@ -39,6 +39,12 @@ Although ESP32-based or STM32-based boards would be a great option too, I went w
   
 The modules are connected to the Arduino using a prototyping PCB. The devices are packaged in a 3D printed housing (designed and printed by the author too).
 
+First, the setup was built on breadboards to test it.
+
+![](/images/weather-station/test-setup.png "Test setup on breadboards")
+
+After making sure everything worked as intended, the parts were soldered together and placed inside their custom-made cases.
+
 ![](/images/weather-station/finished-base-station-inside.png "The assembled base station")
 
 
