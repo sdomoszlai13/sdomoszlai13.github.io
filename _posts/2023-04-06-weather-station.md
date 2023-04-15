@@ -2,7 +2,7 @@
 
 *Also known as: building your own weather station for 40$ instead of buying a professional one for 30$ offering more functionality and less frustration.*
 
-![](/images/weather-station/.png "The finished weather station")
+![](/images/weather-station/finished-both.png "The finished weather station. Please note that the base station was has just been placed outdoor and shows a higher temperature than the remote unit for this reason")
 
 The screen of the lovely weather station with a backlit sun and clouds, purchased a few weeks ago from Aliexpress for 15$, reads (as ever so often): "Indoor temperature: 20.6 C, indoor humidity: 56%. Outdoor temperature: -.-- C, outdoor humidty: --%".
 This journey begins on a Tuesday morning as I am looking at our certainly cute but not too reliable weather station. The base station lost connection to the outdoor unit - again. "Why not build your own then?", I said to myself, and so I did.
