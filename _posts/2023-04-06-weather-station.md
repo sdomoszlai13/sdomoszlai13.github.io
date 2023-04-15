@@ -1,4 +1,4 @@
-# Simple Arduino-based Weather Station
+# Arduino-based Weather Station
 
 *Also known as: building your own weather station instead of buying a professional one cheaper, offering more functionality and less frustration.*
 
