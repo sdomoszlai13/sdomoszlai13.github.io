@@ -1,6 +1,6 @@
 # Simple Arduino-based Weather Station
 
-*Also known as: building your own weather station for 40$ instead of buying a professional one for 30$ offering more functionality and less frustration.
+*Also known as: building your own weather station for 40$ instead of buying a professional one for 30$ offering more functionality and less frustration.*
 
 The screen of the lovely weather station with a backlit sun and clouds, purchased a few weeks ago from Aliexpress for 15$, reads (as ever so often): "Indoor temperature: 20.6 C, indoor humidity: 56%. Outdoor temperature: -.-- C, outdoor humidty: --%".
 This journey begins on a Tuesday morning as I am looking at our certainly cute but not too reliable weather station. The base station lost connection to the outdoor unit - again. "Why not build your own then?", I said to myself, and so I did.
@@ -147,12 +147,12 @@ void printData(float indoor_val, float outdoor_val, TypeOfVal type_of_val){
 
 ### Remote Unit Code Highlights
   
-The remote unit's display library is more sophisticated and hence, no tricks were required to print the values as with the base station. However, as the screen of the remote unit won't be of interest about 99.9% of the time, I decided it should be turned off by default. Only a button press should activate the LCD. This feature is implemented with a press button that's connected in series with a 47 k$\Omega$ resistor between $V_{CC}$ and $GND$. Such push buttons usually need to be debounced so a single button press doesn't produce multiple rising and falling edges. However, as I determined using an oscilloscope, this setup works reliably without sotware or hardware debouncing, luckily.
+The remote unit's display library is more sophisticated and hence, no tricks were required to print the values as with the base station. However, as the screen of the remote unit won't be of interest about 99.9% of the time, I decided it should be turned off by default. Only a button press should activate the LCD. This feature is implemented with a press button that's connected in series with a 47 k$\Omega$ resistor between $V_{CC}$ and $GND$. Such push buttons usually need to be debounced so a single button press doesn't produce multiple rising and falling edges. However, as I determined using an oscilloscope, this setup works reliably without sotware or hardware debouncing (see section **Bonus Material: Investigating Push Button Bouncing** ath the end of this post for details).
   
 
 The software challenge with the remote unit was the detection of the button press. The Arduino `loop()` runs forever, and in this case, makes measurements, and sends data. The state of the button could also be monitored in the `loop()` function to see if the button was pressed. There's just one problem: what if the button is pressed when the processor is busy sending data or doing measurements? Luckily, there's a concept in microcontroller technology just for this problem: the interrupt service routine (ISR).
   
-An ISR can be called by an event, e.g., a change in a variable or a change in the logic level of an input pin. So, I connected the push button to the digital pin D2 of the Arduino and monitored it's state in an ISR. Too easy, right? Right: as always, *The devil is in the details*. An ISR interrupts every process that the processor is working on and can cause serious trouble if it runs for a significant amount of time. For this reason, ISRs should be kept as short as possible. Also, function calls can only be made without passing arguments and no return values are allowed. Wanna use `millis()` or `micros()` to measure time intervals or print something on the serial monitor? Sorry, not possible inside an ISR! I bet now you'd wanna  finish the ISR as soon as possible even if it weren't be best practice...
+An ISR can be called by an event, e.g., a change in a variable or a change in the logic level of an input pin. So, I connected the push button to the digital pin D2 of the Arduino and monitored it's state in an ISR. Too easy, right? Right: as always, *the devil is in the details*. An ISR interrupts every process that the processor is working on and can cause serious trouble if it runs for a significant amount of time. For this reason, ISRs should be kept as short as possible. Also, function calls can only be made without passing arguments and no return values are allowed. Wanna use `millis()` or `micros()` to measure time intervals or print something on the serial monitor? Sorry, not possible inside an ISR! I bet now you'd wanna  finish the ISR as soon as possible even if it weren't be best practice...
   
 The best way to monitor a push button with an ISR goes for the reasons mentioned above as follows:
   * let the ISR be called when a rising/falling edge is detected at the push button
@@ -187,7 +187,7 @@ void buttonPressed(){
   
 ```
 
-# CASE
+## CASE
 
 The case is a custom-made, 3D printed part. I designed it myself to fit my needs. There's nothing special here; it's a case that allows a PCB and an LCD to be screwed in, a button to be glued in and a little pocket for the battery holder. Some pictures depicting the cases are shown below.
 
