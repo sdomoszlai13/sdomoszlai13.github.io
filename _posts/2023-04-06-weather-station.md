@@ -231,15 +231,15 @@ The above image has a time scale resolution 1,000 times finer than the above pic
 
 What happened here? Well, the rising edge lasts about 10 µs, which is acceptable as the Arduino is probably never fast enough for this delay to cause trouble. Nevertheless, it's worth noting that there's a significant difference in the rise time and the fall time. Let's zoom in even further to see if our perfect falling edge is perfect indeed.
 
-![](/images/weather-station/SDS000011.png "Rising edge after releasing the button. Time scale: 5 µs")
+![](/images/weather-station/SDS00011.png "Rising edge after releasing the button. Time scale: 5 µs")
 
 Here, we can see even better how the rising edge is in fact an exponential function, probably caused by some capacitance in the circuit (10 times finer time scale than above).
 
-![](/images/weather-station/SDS000013.png "Falling edge after pressing the button. Time scale: 5 µs")
+![](/images/weather-station/SDS00013.png "Falling edge after pressing the button. Time scale: 5 µs")
 
 At this time scale, we're beginning to see the real nature of the falling edge too. Still, we are at a 1,000 finer time scale compared to the time scale where the rising edge began to look like an exponential curve. Using the falling edge as a  trigger is therefore absolutely safe.
 
-![](/images/weather-station/SDS000019.png "Falling edge after pressing the button. Time scale: 50 ns")
+![](/images/weather-station/SDS00019.png "Falling edge after pressing the button. Time scale: 50 ns")
 
 Finally, at 50 ns, the exponential voltage change is fully revealed at the falling edge too. In a low-freqency application like push buttons, this is perfectly fine and won't cause any troubles. However, it's interesting to note that modern CPUs are working with clock speeds with frequencies in the order of GHz, which means periods on the order of ns. This means that even instantaneous metal contact switches wouldn't be fast enough to build modern CPUs. Wonders of technology...
 
