@@ -41,6 +41,7 @@ $$F(t') = \sum_{j} F_{spring_j} + mg.$$
 
 To make use of this algorithm, we have to divide our simulation time into $n$ discrete time steps which a time difference of $\Delta t$.
 
+Ever wondered what the the trajectory of a double pendulum would look like? Or even better: a triple pendulum? What about the placing of carbon atoms in a single-walled carbon nanotube? Now you can find out! Play around with this little simulation tool and see for yourself what's possible in the world of frictionless spring mass systems!
 
 ## Examples
 
