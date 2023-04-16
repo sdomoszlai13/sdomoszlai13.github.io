@@ -69,9 +69,13 @@ Double pendulums are actually quite fascinating because of their so-called chaot
 
 Isn't it amazing what a basic algorithm for solving differential equations is capable of?
 
-Of course, there are some pitfalls you have to avoid to get realistic results. Simulation time and the number of time steps is critical. There should be at least 1000 time steps for each second of simulation time, depending on expected velocities of the masses. Similarly, if the spring constant is increased, the number of time steps should also be increased. This is important because of higher velocities and accelerations. As the time steps are distributed equally on the time scale, calculated points on the trajectory are more spaced out if the velocity of a mass is higher. This can be seen in the image below.
+Of course, there are some pitfalls to avoid to get realistic results. Simulation time and the number of time steps is critical. There should be at least 1000 time steps for each second of simulation time, depending on expected velocities of the masses. Similarly, if the spring constant is increased, the number of time steps should also be increased. This is important because of higher velocities and accelerations. As the time steps are distributed equally on the time scale, calculated points on the trajectory are more spaced out if the velocity of a mass is higher. This can be seen in the image below.
 
 ![](/images/spring-mass-system-simulator/zoom1.png "Points are more spaced out when a body is moving with a higher velocity")
 
+
+## Summary
+
+The "brute force" approach of using the forward Euler method to solve the equations of motion for a spring mass systems is not the most efficient. However, it allows a swift introduction to the world of numerical simulations. If the simulation parameters are chosen wise, one can get decent results, e.g. realistic trajectories of the masses of a triple pendulum or a chain of atoms.
 
 You can find the complete code in my GitHub repository at https://github.com/sdomoszlai13/spring-mass-system-simulator.
