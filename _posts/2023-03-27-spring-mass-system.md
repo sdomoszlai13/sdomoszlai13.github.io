@@ -155,29 +155,29 @@ And now for the fun part: doing the calculations. The function below calculates 
 
 ```python
 def update(self):
-        """
-        Update positions and velocities of the masses, and
-        the force acting on them
-        """
+    """
+    Update positions and velocities of the masses, and
+    the force acting on them
+    """
 
-        # Update forces
-        for m in self.masses:
-            m.f = [0, 0]
-            for elem in m.attached: # elem = [other_mass_or_fixture, spring_constant, rest_length]
-                m.f[0] += -elem[1] * (np.linalg.norm(np.array(elem[0].pos) - np.array(m.pos)) - elem[2]) * ((np.array(m.pos[0]) - np.array(elem[0].pos[0])) / (np.linalg.norm(np.array(elem[0].pos) - np.array(m.pos))))
-                m.f[1] += -elem[1] * (np.linalg.norm(np.array(elem[0].pos) - np.array(m.pos)) - elem[2]) * ((np.array(m.pos[1]) - np.array(elem[0].pos[1])) / (np.linalg.norm(np.array(elem[0].pos) - np.array(m.pos)))) + m.m * self.g
+    # Update forces
+    for m in self.masses:
+        m.f = [0, 0]
+        for elem in m.attached: # elem = [other_mass_or_fixture, spring_constant, rest_length]
+            m.f[0] += -elem[1] * (np.linalg.norm(np.array(elem[0].pos) - np.array(m.pos)) - elem[2]) * ((np.array(m.pos[0]) - np.array(elem[0].pos[0])) / (np.linalg.norm(np.array(elem[0].pos) - np.array(m.pos))))
+            m.f[1] += -elem[1] * (np.linalg.norm(np.array(elem[0].pos) - np.array(m.pos)) - elem[2]) * ((np.array(m.pos[1]) - np.array(elem[0].pos[1])) / (np.linalg.norm(np.array(elem[0].pos) - np.array(m.pos)))) + m.m * self.g
 
-        # Update positions
-        for m in self.masses:
-            m.pos[0] += m.v[0] * self.delta_t
-            m.pos[1] += m.v[1] * self.delta_t
-            m.trajectory.append(m.pos[:]) # Deep copy of pos
-            # print(f"Added to trajectory: {m.pos}")
+    # Update positions
+    for m in self.masses:
+        m.pos[0] += m.v[0] * self.delta_t
+        m.pos[1] += m.v[1] * self.delta_t
+        m.trajectory.append(m.pos[:]) # Deep copy of pos
+        # print(f"Added to trajectory: {m.pos}")
 
-        # Update velocities
-        for m in self.masses:
-            m.v[0] += m.f[0] / m.m * self.delta_t
-            m.v[1] += m.f[1] / m.m * self.delta_t
+    # Update velocities
+    for m in self.masses:
+        m.v[0] += m.f[0] / m.m * self.delta_t
+        m.v[1] += m.f[1] / m.m * self.delta_t
 ```
 
 The calculations implemented are done based on the equations shown earlier (see section **Physical Background**). The advantage of the object-oriented approach really stand out here: as the update function is a member function of the SpringMassSystem class which "knows" of every fixture, mass, and spring, no function arguments are needed for the update function. Every relevant physical quantity is an attribute of the object (the same goes later for plotting). The NumPy library is used to calculate the vector norms. Note the importance of the deep copy when updating mass positions. This is a crucial step; otherwise, the trajectory won't be updated properly.
@@ -185,25 +185,68 @@ The calculations implemented are done based on the equations shown earlier (see 
 Another member function of the SpringMassSystem class is the energy function. It's used to calculate the total energy of a spring mass system at a given point in time. Doing these calculations at least at the beginning and the end of a simulation, the plausibility of the calculated trajectories can be checked.
 
 ```python
-    def energy(self, t):
-        """
-        Calculate total energy of the system at a given point in time
-        """
+def energy(self, t):
+    """
+    Calculate total energy of the system at a given point in time
+    """
 
-        E = 0
+    E = 0
 
-        # Calculate energy of masses
-        for m in self.masses:
-            E += m.m * m.trajectory[t][1] * self.g + m.m * (m.v[0] ** 2 + m.v[1] ** 2) / 2
+    # Calculate energy of masses
+    for m in self.masses:
+        E += m.m * m.trajectory[t][1] * self.g + m.m * (m.v[0] ** 2 + m.v[1] ** 2) / 2
 
-        # Calculate energy of springs
-        for s in self.springs:
-            E += s[0].k * (np.linalg.norm(np.array(s[0].conn[0].pos) - np.array(s[0].conn[1].pos)) - s[0].l0)
-        
-        return E
+    # Calculate energy of springs
+    for s in self.springs:
+        E += s[0].k * (np.linalg.norm(np.array(s[0].conn[0].pos) - np.array(s[0].conn[1].pos)) - s[0].l0)
+
+    return E
 ```
 
 There are also functions to save and plot trajectories. There's nothing special about them and therefore, they won't be discussed here.
+
+Last but not least, there's the run function. This function is called after the setup of the spring mass system is finished. It runs the simulation and plots trajectories. If wished, it also saves trajectories to a .txt file.
+
+```python
+def run(self):
+    """Run the simulation"""
+
+    # Create time steps
+    self.times = np.linspace(0, 1, self.timesteps)
+
+    # Calculate initial energy of the system
+    self.E_i = self.energy(0)
+
+    # Update forces, positions and velocities. Create m.trajectory array for each m
+    for t in self.times:
+        self.update()
+
+    # Save trajectories of all masses in a single array (trajectories).
+    # One element of the array contains the coordinates of all masses at a given point in time
+
+    # self.trajectories = [self.timesteps, 2, len(self.masses)]
+    self.trajectories = []
+
+    for t in range(len(self.times)):
+        x_coords = [m.trajectory[t][0] for m in self.masses]
+        y_coords = [m.trajectory[t][1] for m in self.masses]
+        self.trajectories.append([x_coords, y_coords])
+
+    # Calculate final energy of the system
+    self.E_f = self.energy(self.timesteps)
+
+    # Check plausibility of results
+    self.energyCheck()
+
+
+    # Save to file if user wishes
+    if self.save_csv == True:
+        self.save()
+        print(f"Saved trajectories to \"trajectories.txt\"")
+
+    # Plot trajectories
+    self.plot()
+```
 
 
 ## Examples
