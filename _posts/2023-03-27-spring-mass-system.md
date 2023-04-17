@@ -151,6 +151,33 @@ class SpringMassSystem:
 
 A Spring Mass System object has attributes that store the gravitational acceleration in the system, the number of time steps, the fixtures, masses, and springs etc.
 
+And now for the fun part: doing the calculations. The function below calculates the relevant physical quantities (positions, velocities, forces) for the next time step.
+
+```python
+def update(self):
+        """
+        Update positions and velocities of the masses, and
+        the force acting on them
+        """
+
+        # Update forces
+        for m in self.masses:
+            m.f = [0, 0]
+            for elem in m.attached: # elem = [other_mass_or_fixture, spring_constant, rest_length]
+                m.f[0] += -elem[1] * (np.linalg.norm(np.array(elem[0].pos) - np.array(m.pos)) - elem[2]) * ((np.array(m.pos[0]) - np.array(elem[0].pos[0])) / (np.linalg.norm(np.array(elem[0].pos) - np.array(m.pos))))
+                m.f[1] += -elem[1] * (np.linalg.norm(np.array(elem[0].pos) - np.array(m.pos)) - elem[2]) * ((np.array(m.pos[1]) - np.array(elem[0].pos[1])) / (np.linalg.norm(np.array(elem[0].pos) - np.array(m.pos)))) + m.m * self.g
+
+        # Update positions
+        for m in self.masses:
+            m.pos[0] += m.v[0] * self.delta_t
+            m.pos[1] += m.v[1] * self.delta_t
+            m.trajectory.append(m.pos[:]) # Deep copy of pos
+            # print(f"Added to trajectory: {m.pos}")
+
+        # Update velocities
+        for m in self.masses:
+            m.v[0] += m.f[0] / m.m * self.delta_t
+            m.v[1] += m.f[1] / m.m * self.delta_t
 
 
 
