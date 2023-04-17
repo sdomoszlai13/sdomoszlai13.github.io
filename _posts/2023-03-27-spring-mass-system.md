@@ -44,7 +44,7 @@ To make use of this algorithm, we have to divide our simulation time into $n$ di
 
 ## Software
 
-The simulation is implemented in Python, as speed is not critical and there are great libraries available for numerical simulations in Python (NumPy, SciPy etc.), and MatPlotLib makes nice and easy plotting possible. An object-oriented approach was chosen for the simulation, as the the problem can be well described with an objects-centered approach. Both fixtures and masses are a user-defined type in the program.
+The simulation is implemented in Python, as speed is not critical and there are great libraries available for numerical simulations in Python (NumPy, SciPy etc.), and MatPlotLib makes nice and easy plotting possible. An object-oriented approach was chosen for the simulation, as the the problem can be well described with an objects-centered approach. Fixtures, masses, and springs are all user-defined types in the program.
 
 The fixtures can be implemented relatively straight forward.
 
@@ -65,6 +65,32 @@ class Fixture:
 ```
 
 For the masses, there are some important things to consider.
+
+```python
+class Mass:
+    """
+    Initialize a mass.
+    Attributes:
+    -m: mass
+    -pos: position
+    -v: velocity
+    -f: acting force
+    -attached: attached objects (mass(es) and/or spring(s))
+    -trajectory: trajectory
+    
+    Position and velocity must be provided as a list
+    """
+
+    def __init__(self, m, x0, y0, vx0, vy0):
+        self.m = m
+        self.pos = [x0, y0]
+        self.v = [vx0, vy0]
+        self.f = []
+        self.attached = [] # List format: [mass/fixture connected to this fixture,
+                           #               spring constant of connecting spring,
+                           #               rest length of connecting spring]
+        self.trajectory = [self.pos]
+```
 
 
 ## Examples
