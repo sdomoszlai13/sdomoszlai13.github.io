@@ -1,6 +1,6 @@
 # Spring Mass System Simulator
 
-Today we're gonna take a look at solving the equations of motion for a spring mass system. Now, you may be asking: solving a what? Well, imagine you wanted to simulate the motion of a piece of elastic fabric hung up on a wall, or the motion of atoms in molecules (and believe me, sometimes you $do$ want to). Such systems can be described by spring mass systems. These are systems that contain multiple bodies with mass that are connected by springs. Of course, the connections can be arbitrary and the "stiffness" of the springs (the spring constant) can be different for every spring. There are also one or more fixtures we can tether the masses on, so they won't fall down.
+Today we're gonna take a look at solving the equations of motion for a spring mass system. Now, you may be asking: solving a what? Well, imagine you wanted to simulate the motion of a piece of elastic fabric hung up on a wall, or the motion of atoms in molecules (and believe me, sometimes you $do$ want to). Such systems can be described by spring mass systems. These are systems that contain multiple bodies with mass that are connected by springs. Of course, the connections can be arbitrary and the "stiffness" of the springs (the spring constant) can be different for every spring. There are also one or more fixtures we can tether the masses on, so they won't just enter free fall.
 You can find the complete code in my GitHub repository at https://github.com/sdomoszlai13/spring-mass-system-simulator.
 <br>
 <br>
@@ -41,7 +41,31 @@ $$F(t') = \sum_{j} F_{spring_j} + mg.$$
 
 To make use of this algorithm, we have to divide our simulation time into $n$ discrete time steps which a time difference of $\Delta t$. Then, for every time step, the new values of $x(t)$, $v(t)$, and $F(t)$ are calculated. The set of the values of $x(t)$ is the trajectory of the mass. These values can be stored in array and be plotted. This algorithm is implemented for an arbitrary number of masses moving in 2D by this program.
 
-Ever wondered what the the trajectory of a double pendulum would look like? Or even better: a triple pendulum? What about the placing of carbon atoms in a single-walled carbon nanotube? Now you can find out! Play around with this little simulation tool and see for yourself what's possible in the world of frictionless spring mass systems!
+
+## Software
+
+The simulation is implemented in Python, as speed is not critical and there are great libraries available for numerical simulations in Python (NumPy, SciPy etc.), and MatPlotLib makes nice and easy plotting possible. An object-oriented approach was chosen for the simulation, as the the problem can be well described with an objects-centered approach. Both fixtures and masses are a user-defined type in the program.
+
+The fixtures can be implemented relatively straight forward.
+
+```python
+class Fixture:
+    """
+    Initialize a fixture.
+    Attributes:
+    -pos: position
+    -attached: attached objects (mass(es) and/or spring(s))
+    """
+
+    def __init__(self, x, y):
+        self.pos = [x, y]
+        self.attached = [] # List format: [mass/fixture connected to this fixture,
+                           #               spring constant of connecting spring,
+                           #               rest length of connecting spring]
+```
+
+For the masses, there are some important things to consider.
+
 
 ## Examples
 
@@ -72,6 +96,8 @@ Isn't it amazing what a basic algorithm for solving differential equations is ca
 Of course, there are some pitfalls to avoid to get realistic results. Simulation time and the number of time steps is critical. There should be at least 1000 time steps for each second of simulation time, depending on expected velocities of the masses. Similarly, if the spring constant is increased, the number of time steps should also be increased. This is important because of higher velocities and accelerations. As the time steps are distributed equally on the time scale, calculated points on the trajectory are more spaced out if the velocity of a mass is higher. This can be seen in the image below.
 
 ![](/images/spring-mass-system-simulator/zoom1.png "Points are more spaced out when a body is moving with a higher velocity")
+
+Ever wondered what the the trajectory of a double pendulum would look like? Or even better: a triple pendulum? What about the placing of carbon atoms in a single-walled carbon nanotube? Now you can find out! Play around with this little simulation tool and see for yourself what's possible in the world of frictionless spring mass systems!
 
 
 ## Summary
