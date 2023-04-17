@@ -44,7 +44,7 @@ To make use of this algorithm, we have to divide our simulation time into $n$ di
 
 ## Software
 
-The simulation is implemented in Python, as speed is not critical and there are great libraries available for numerical simulations in Python (NumPy, SciPy etc.), and MatPlotLib makes nice and easy plotting possible. An object-oriented approach was chosen for the simulation, as the the problem can be well described with an objects-centered approach. Fixtures, masses, and springs are all user-defined types in the program.
+The simulation is implemented in Python, as speed is not critical and there are great libraries available for numerical simulations in Python (NumPy, SciPy etc.), and MatPlotLib makes nice and easy plotting possible. An object-oriented approach was chosen for the simulation, as the the problem can be well described with an objects-centered approach. Fixtures, masses, springs, and even whole spring mass systems are all user-defined types in the program.
 
 The fixtures can be implemented relatively straight forward.
 
@@ -115,6 +115,43 @@ class Spring:
 ```
 
 The Spring objects "know" (through an attribute) which fixtures and/or masses they connect. It's worth noting that there's no length attribute; the current length isn't stored with the spring as it's just needed for the force calculations. Thus, the spring lengths are calculated for every time step by calculating the distance between connected objects and used only to update the force values.
+
+The SpringMassSystem class is implemented as shown below.
+
+```python
+class SpringMassSystem:
+    """
+    Initialize the spring mass system.
+    Attributes with similar names as in Mass and Fixture class
+    are defined identical.
+    Additional attributes:
+    -time: length of time interval to be simulated
+    -timesteps: number of intervals time is to be divided into
+    -g: gravitational acceleration
+    -save: control of function save() that saves trajectories in a file
+    Fixtures, masses, and springs must be provided as lists
+    """
+
+    def __init__(self, fixtures, masses, springs, time = 1, timesteps = 100, save = False, g = 9.81):
+        self.fixtures = fixtures
+        self.masses = masses
+        self.springs = springs
+        self.g = -g
+        self.timesteps = timesteps
+        self.time = time
+        self.delta_t = time / timesteps
+        self.trajectories = []
+        self.save_csv = save
+        self.E_i = 0
+        self.E_f = 0
+
+        for m in self.masses:
+            m.f = [0, m.m * self.g]
+```
+
+A Spring Mass System object has attributes that store the gravitational acceleration in the system, the number of time steps, the fixtures, masses, and springs etc.
+
+
 
 
 ## Examples
