@@ -64,7 +64,7 @@ class Fixture:
                            #               rest length of connecting spring]
 ```
 
-For the masses, there are some important things to consider.
+For the masses, there are some important things to consider. The initial position and initial velocity is are passed component-wise. The constructor creates the corresponding vectors and initializes them accordingly. The Mass class has a trajectory attribute. This way, every mass object has its trajectory "attached" to it - just as in reality. After careful considerations, the author concluded it would be best to make masses "know" which fixtures and/or objects are connected to them. This comes in handy later: it makes a well-readable calculation of the force acting on the masses possible.
 
 ```python
 class Mass:
@@ -77,8 +77,6 @@ class Mass:
     -f: acting force
     -attached: attached objects (mass(es) and/or spring(s))
     -trajectory: trajectory
-    
-    Position and velocity must be provided as a list
     """
 
     def __init__(self, m, x0, y0, vx0, vy0):
