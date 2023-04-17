@@ -90,6 +90,32 @@ class Mass:
         self.trajectory = [self.pos]
 ```
 
+The Spring object is implemented as shown below.
+
+```python
+class Spring:
+    """
+    Initialize a spring that connects a fixture and a mass, or two masses.
+    Attributes:
+    -l0: rest length
+    -k: spring constant
+    -conn: objects that the spring connects (list of mass(es) and/or fixture(s))
+    
+    Connecting mass(es) and/or fixture(s) must be provided as a list
+    """
+
+    def __init__(self, l0, k, conn):
+        self.l0 = l0
+        self.k = k
+        self.conn = conn
+
+        # Attach spring to second element (fixture/mass)
+        self.conn[0].attached.append([conn[1], self.k, self.l0])
+        self.conn[1].attached.append([conn[0], self.k, self.l0])
+```
+
+The Spring objects "know" (through an attribute) which fixtures and/or masses they connect. It's worth noting that there's no length attribute; the current length isn't stored with the spring as it's just needed for the force calculations. Thus, the spring lengths are calculated for every time step by calculating the distance between connected objects and used only to update the force values.
+
 
 ## Examples
 
