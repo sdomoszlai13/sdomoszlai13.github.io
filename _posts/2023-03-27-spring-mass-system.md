@@ -178,7 +178,32 @@ def update(self):
         for m in self.masses:
             m.v[0] += m.f[0] / m.m * self.delta_t
             m.v[1] += m.f[1] / m.m * self.delta_t
+```
 
+The calculations implemented are done based on the equations shown earlier (see section **Physical Background**). The advantage of the object-oriented approach really stand out here: as the update function is a member function of the SpringMassSystem class which "knows" of every fixture, mass, and spring, no function arguments are needed for the update function. Every relevant physical quantity is an attribute of the object (the same goes later for plotting). The NumPy library is used to calculate the vector norms. Note the importance of the deep copy when updating mass positions. This is a crucial step; otherwise, the trajectory won't be updated properly.
+
+Another member function of the SpringMassSystem class is the energy function. It's used to calculate the total energy of a spring mass system at a given point in time. Doing these calculations at least at the beginning and the end of a simulation, the plausibility of the calculated trajectories can be checked.
+
+```python
+    def energy(self, t):
+        """
+        Calculate total energy of the system at a given point in time
+        """
+
+        E = 0
+
+        # Calculate energy of masses
+        for m in self.masses:
+            E += m.m * m.trajectory[t][1] * self.g + m.m * (m.v[0] ** 2 + m.v[1] ** 2) / 2
+
+        # Calculate energy of springs
+        for s in self.springs:
+            E += s[0].k * (np.linalg.norm(np.array(s[0].conn[0].pos) - np.array(s[0].conn[1].pos)) - s[0].l0)
+        
+        return E
+```
+
+There are also functions to save and plot trajectories. There's nothing special about them and therefore, they won't be discussed here.
 
 
 ## Examples
