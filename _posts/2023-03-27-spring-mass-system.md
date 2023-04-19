@@ -257,13 +257,13 @@ Let's see what's possible with a basic simulation tool like this. First, we try 
 
 Next, let's look at a non-elastic pendulum.
 
-![](/images/spring-mass-system-simulator/swing.png "Mass attached to a rigid, swinging, initially vertical spring")
+![](/images/spring-mass-system-simulator/pend.png "Mass attached to a rigid, swinging, initially vertical spring")
 
 So far, so good. There's nothing special going on here.
 
 Now, let's see what happens if we build an elastic pendulum.
 
-![](/images/spring-mass-system-simulator/el-pend.png "Mass attached to an elastic, swinging, initially vertical spring")
+![](/images/spring-mass-system-simulator/el_pend.png "Mass attached to an elastic, swinging, initially vertical spring")
 
 Nice! Now we're gonna take a look at a double pendulum.
 
