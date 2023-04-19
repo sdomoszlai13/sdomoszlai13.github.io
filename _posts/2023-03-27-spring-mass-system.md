@@ -253,7 +253,7 @@ def run(self):
 
 Let's see what's possible with a basic simulation tool like this. First, we try to simulate a vertically oscillating mass, also known as a harmonic oscillator.
 
-![](/images/spring-mass-system-simulator/harm-osc.png "Mass attached to vertical spring (harmonic oscillator)")
+![](/images/spring-mass-system-simulator/harm_osc.png "Mass attached to vertical spring (harmonic oscillator)")
 
 Next, let's look at a non-elastic pendulum.
 
@@ -279,7 +279,7 @@ Of course, there are some pitfalls to avoid to get realistic results. Simulation
 
 ![](/images/spring-mass-system-simulator/zoom2.png "Points are more spaced out when a body is moving with a higher velocity")
 
-![](/images/spring-mass-system-simulator/zoom3.png "Points are more spaced out when a body is moving with a higher velocity")
+![](/images/spring-mass-system-simulator/zoom3.png "When zoomed in even more, the variable spacing is even more visible")
 
 Ever wondered what the the trajectory of a double pendulum would look like? Or even better: a triple pendulum? What about the placing of carbon atoms in a single-walled carbon nanotube? Now you can find out! Play around with this little simulation tool and see for yourself what's possible in the world of frictionless spring mass systems!
 
