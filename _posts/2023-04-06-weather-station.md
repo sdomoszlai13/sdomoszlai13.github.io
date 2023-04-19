@@ -203,7 +203,7 @@ void buttonPressed(){
 
 ## CASE
 
-The case is a custom-made, 3D printed part. I designed it myself to fit my needs. There's nothing special here; it's a case that allows a PCB and an LCD to be screwed in, a button to be glued in and a little pocket for the battery holder. Some pictures depicting the cases are shown below.
+The case is a custom-made, 3D printed part. I designed it myself to fit my needs. There's nothing special here; it's a case that allows a PCB and an LCD to be screwed in, a button to be glued in and a little pocket for the battery holder. Both cases are held together by magnets put into the "pockets" of the individual parts. Some pictures of the nice (?) purple-colored cases are shown below.
 
 ![](/images/weather-station/case-top.png "Top part of the base station case")
 
