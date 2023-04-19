@@ -267,17 +267,19 @@ Now, let's see what happens if we build an elastic pendulum.
 
 Nice! Now we're gonna take a look at a double pendulum.
 
-![](/images/spring-mass-system-simulator/doub-pend-rig.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (inelastic double pendulum)")
+![](/images/spring-mass-system-simulator/doub-pend-disp.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (inelastic double pendulum)")
 
 Double pendulums are actually quite fascinating because of their so-called chaotic behavior. This means that for slight variations in the initial conditions, the resulting trajectories can be significantly different from one another. Such systems can be described with the help of chaos theory. But now, let's create a bit more chaos, shall we? Here's an elastic double pendulum.
 
-![](/images/spring-mass-system-simulator/doub-pend-el.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (elastic double pendulum)")
+![](/images/spring-mass-system-simulator/doub-pend-vert.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (elastic double pendulum)")
 
 Isn't it amazing what a basic algorithm for solving differential equations is capable of?
 
 Of course, there are some pitfalls to avoid to get realistic results. Simulation time and the number of time steps is critical. There should be at least 1000 time steps for each second of simulation time, depending on expected velocities of the masses. Similarly, if the spring constant is increased, the number of time steps should also be increased. This is important because of higher velocities and accelerations. As the time steps are distributed equally on the time scale, calculated points on the trajectory are more spaced out if the velocity of a mass is higher. This can be seen in the image below.
 
-![](/images/spring-mass-system-simulator/zoom1.png "Points are more spaced out when a body is moving with a higher velocity")
+![](/images/spring-mass-system-simulator/zoom2.png "Points are more spaced out when a body is moving with a higher velocity")
+
+![](/images/spring-mass-system-simulator/zoom3.png "Points are more spaced out when a body is moving with a higher velocity")
 
 Ever wondered what the the trajectory of a double pendulum would look like? Or even better: a triple pendulum? What about the placing of carbon atoms in a single-walled carbon nanotube? Now you can find out! Play around with this little simulation tool and see for yourself what's possible in the world of frictionless spring mass systems!
 
