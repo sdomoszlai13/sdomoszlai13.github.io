@@ -46,7 +46,13 @@ To make use of this algorithm, we have to divide our simulation time into $n$ di
 
 The simulation is implemented in Python, as speed is not critical and there are great libraries available for numerical simulations in Python (NumPy, SciPy etc.), and MatPlotLib makes nice and easy plotting possible. An object-oriented approach was chosen for the simulation, as the the problem can be well described with an objects-centered approach. Fixtures, masses, springs, and even whole spring mass systems are all user-defined types in the program.
 
-The fixtures can be implemented relatively straight forward.
+The program is devided in three files:
+
+* main.py: contains everything needed to run a simulation
+* user_input.py: contains functions for nice-and-easy user input to setup a simulation
+* test.py: contains pre-built spring mass systems for testing purposes.
+
+The main.py file contains the classes for the fixtures, masses, springs etc. The fixtures can be implemented relatively straight forward.
 
 ```python
 class Fixture:
@@ -287,9 +293,9 @@ Of course, there are some pitfalls to avoid to get realistic results. Simulation
 
 If the number of time steps is too low, the solutions can diverge and plots as shown below appear.
 
-![](/images/spring-mass-system-simulator/error_1.png "")
+![](/images/spring-mass-system-simulator/error_1.png "There's even no distinct trajectory because of too few time steps chosen")
 
-![](/images/spring-mass-system-simulator/error_2.png "Clearly wrong trajectories because of too few time steps chosen")
+![](/images/spring-mass-system-simulator/error_2.png "Zoom-in of the above image")
 
 Ever wondered what the the trajectory of a double pendulum would look like? Or even better: a triple pendulum? What about the placing of carbon atoms in a single-walled carbon nanotube? Now you can find out! Play around with this little simulation tool and see for yourself what's possible in the world of frictionless spring mass systems!
 
