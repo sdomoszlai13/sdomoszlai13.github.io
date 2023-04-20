@@ -269,9 +269,13 @@ Nice! Now we're gonna take a look at a double pendulum.
 
 ![](/images/spring-mass-system-simulator/doub_pend_disp.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (inelastic double pendulum)")
 
-Double pendulums are actually quite fascinating because of their so-called chaotic behavior. This means that for slight variations in the initial conditions, the resulting trajectories can be significantly different from one another. Such systems can be described with the help of chaos theory. But now, let's create a bit more chaos, shall we? Here's an elastic double pendulum.
+Double pendulums are actually quite fascinating because of their so-called chaotic behavior. This means that for slight variations in initial conditions, the resulting trajectories can be significantly different from one another. Such systems can be described with the help of chaos theory. But now, let's create a bit more chaos, shall we? Here's an elastic double pendulum.
 
 ![](/images/spring-mass-system-simulator/el_doub_pend.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (elastic double pendulum)")
+
+One more example: three masses tethered between two fixtures. The left mass has a low-value initial velocity in the vertical direction.
+
+![](/images/spring-mass-system-simulator/tet_m.png "Three masses tethered between two fixtures")
 
 Isn't it amazing what a basic algorithm for solving differential equations is capable of?
 
@@ -280,6 +284,12 @@ Of course, there are some pitfalls to avoid to get realistic results. Simulation
 ![](/images/spring-mass-system-simulator/zoom2.png "Points are more spaced out when a body is moving with a higher velocity")
 
 ![](/images/spring-mass-system-simulator/zoom3.png "When zoomed in even more, the variable spacing is even more visible")
+
+If the number of time steps is too low, the solutions can diverge and plots as shown below appear.
+
+![](/images/spring-mass-system-simulator/error_1.png "")
+
+![](/images/spring-mass-system-simulator/error_2.png "Clearly wrong trajectories because of too few time steps chosen")
 
 Ever wondered what the the trajectory of a double pendulum would look like? Or even better: a triple pendulum? What about the placing of carbon atoms in a single-walled carbon nanotube? Now you can find out! Play around with this little simulation tool and see for yourself what's possible in the world of frictionless spring mass systems!
 
