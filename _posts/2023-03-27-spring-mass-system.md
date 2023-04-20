@@ -271,7 +271,7 @@ Nice! Now we're gonna take a look at a double pendulum.
 
 Double pendulums are actually quite fascinating because of their so-called chaotic behavior. This means that for slight variations in the initial conditions, the resulting trajectories can be significantly different from one another. Such systems can be described with the help of chaos theory. But now, let's create a bit more chaos, shall we? Here's an elastic double pendulum.
 
-![](/images/spring-mass-system-simulator/doub_pend_vert.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (elastic double pendulum)")
+![](/images/spring-mass-system-simulator/el_doub_pend.png "Two coupled masses attached to a rigid, swinging, initially vertical spring (elastic double pendulum)")
 
 Isn't it amazing what a basic algorithm for solving differential equations is capable of?
 
