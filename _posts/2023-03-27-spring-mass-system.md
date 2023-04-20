@@ -296,6 +296,6 @@ Ever wondered what the the trajectory of a double pendulum would look like? Or e
 
 ## Summary
 
-The "brute force" approach of using the forward Euler method to solve the equations of motion for a spring mass systems is not the most efficient. However, it allows a swift introduction to the world of numerical simulations. If the simulation parameters are chosen wise, one can get decent results, e.g. realistic trajectories of the masses of a triple pendulum or a chain of atoms.
+The "brute force" approach of using the forward Euler method to solve the equations of motion for a spring mass systems is not the most efficient. However, it allows a swift introduction to the world of numerical simulations. If the simulation parameters are chosen wisely, one can get decent results, e.g. realistic trajectories of the masses of a triple pendulum or a chain of atoms.
 
 You can find the complete code in my GitHub repository at https://github.com/sdomoszlai13/spring-mass-system-simulator.
