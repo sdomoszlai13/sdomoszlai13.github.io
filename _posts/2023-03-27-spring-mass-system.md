@@ -7,7 +7,7 @@ You can find the complete code in my GitHub repository at https://github.com/sdo
 The program we'll get to know runs a simulation of a system of fixtures, masses, and springs in two dimensions. Fixtures and masses can be set up with initial coordinates and initial velocities (not for fixtures, of course). After setting the desired temporal length and the number of time steps, the simulation is run and a plot is created with the fixtures, masses, and the masses' trajectories so we can see which way they went. There's also an option to save the trajectories to a file.
 <br>
 
-{% include info.html text="The following paragraph is a bit technical. Feel free to dive into it but be warned: I'm sure you've never experienced it, but let me tell you that maths can cause some frustration." %}
+{% include info.html text="The following paragraph (Physical Background) is a bit technical. Feel free to dive into it but let me tell you (as I'm sure you've never experienced it yourself) that maths can be a bit boring or even frustrating some times." %}
 
 
 ## Physical Background
