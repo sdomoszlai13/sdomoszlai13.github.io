@@ -5,7 +5,7 @@
 ![](/images/weather-station/finished-both.png "The finished weather station. Please note that the base station was has just been placed outdoor and shows a higher temperature than the remote unit for this reason")
 
 The screen of the lovely weather station with a backlit sun and clouds, purchased a few weeks ago from Aliexpress for 15$, reads (as ever so often): "Indoor temperature: 20.6 C, indoor humidity: 56%. Outdoor temperature: -.-- C, outdoor humidty: --%".
-This journey begins on a Tuesday morning as I am looking at our certainly cute but not too reliable weather station. The base station lost connection to the outdoor unit - again. "Why not build your own then?", I said to myself, and so I did.
+This journey begins on a Tuesday morning as I am looking at our certainly-cute-but-not-too-reliable weather station. The base station lost connection to the outdoor unit - again. "Why not build your own then?", I said to myself, and so I did.
 
 I wanted to build a weather station similar to those available commercially. The system consists of a base station that can be put on a shelf or table indoor and a remote unit that can be placed outdoor, though it should not come in direct contact with water. Both units measure temperature, pressure and humidity. The remote unit transmits the data to the base station that displays both indoor and outdoor measurements. The remote unit features a display too, which is off by default and displays current measurement values for a few seconds when the button on the unit is pressed. The display of the base station is always on.
 
@@ -61,7 +61,7 @@ The software is required to do the following tasks:
 * monitor the state of a push button
   
 To make the measurements, the *Sparkfun AHT20*, and the *Adafruit BMP280* libraries were used for the two sensors. To drive the display, the libraries *LiquidCrystalI2C* and *Adafruit SSD1306* were used. To control the transceiver, the *NRFLite* library was used.
-You can find the complete code for both the base station and the remote unit in my GitHub repository: https://github.com/sdomoszlai13/weather-station.
+You can find the complete code for both the base station and the remote unit in my GitHub repository: [https://github.com/sdomoszlai13/weather-station](https://github.com/sdomoszlai13/weather-station).
   
 ### Choosing a Communication Protocol
   
@@ -72,7 +72,7 @@ When using peripheral devices with microcomputers like, you can choose from a nu
   
 When writing the code for the base station, the first step is to do the setup required to get the sensors, the transceiver and the LCD up and running. The details are rather uninteresting and won't be discussed here in-depth. One thing to note is that depending on the manufacturer of your LCD, the default I2C address of your LCD can be any integer between 0x20 and 0x27. This address can be changed by soldering jumpers on the back of the LCD. This way, up to eight such LCDs can be used with one Arduino. In any case, make sure the display address matches the address in your software setup.
   
-To keep communication between the two units simple, I created a `struct` that contains three variables of the type `float `: *temp*, *pres*, and *hum*, that store the last measured values of the temperature, pressure, and humidity, respectively.
+To keep communication between the two units simple, I created a `struct` that contains three variables of the type `float`: *temp*, *pres*, and *hum*, that store the last measured values of the temperature, pressure, and humidity, respectively.
   
 ```c++
 struct RadioPacket  // Packet to be received
@@ -221,12 +221,12 @@ The case was designed in Fusion360 and printed with my Creality Ender 3 from PLA
 
 A home-made weather station is a nice project to experiment with different sensors and transceivers. I'd say the software part is quite straight forward. The hardware part requires a bit more planning. A 3D printer certainly helps with the project.
 
-You can find the complete code for both the base station and the remote unit in my GitHub repository: https://github.com/sdomoszlai13/weather-station.
+You can find the complete code for both the base station and the remote unit in my GitHub repository: [https://github.com/sdomoszlai13/weather-station](https://github.com/sdomoszlai13/weather-station).
 
 
 ## Bonus Material: Investigating Push Button Bouncing
 
-Push buttons have a purely mechanical operating principle. When the plastic rod is pressed, an electrical contant is made between the pins of the button. Although it can't be felt by the user, the pushed vibrates on the contact plate before coming to a rest. This lasts fractions of a second but can cause serious trouble in digital circuits, as a single button press may seem to be multiple successive button presses to the electrical circuit. To prevent this behavior, mechanical precautions (e.g., a capacitor) can be taken or software tweaks (e.g., a delay after every buttton push) be made. For more details, take a look at https://docs.arduino.cc/built-in-examples/digital/Debounce.
+Push buttons have a purely mechanical operating principle. When the plastic rod is pressed, an electrical contant is made between the pins of the button. Although it can't be felt by the user, the pushed vibrates on the contact plate before coming to a rest. This lasts fractions of a second but can cause serious trouble in digital circuits, as a single button press may seem to be multiple successive button presses to the electrical circuit. To prevent this behavior, mechanical precautions (e.g., a capacitor) can be taken or software tweaks (e.g., a delay after every buttton push) be made. For more details, take a look at [https://docs.arduino.cc/built-in-examples/digital/Debounce] (https://docs.arduino.cc/built-in-examples/digital/Debounce).
 
 Another aspect to consider is whether to use falling edges, rising edges, or both as triggers. In this case, only the fact that the button was pushed is of interest. Therefore, triggering on only one of them is satisfactory. Now, which one is more reliable to use, you ask?
 
