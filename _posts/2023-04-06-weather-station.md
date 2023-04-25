@@ -60,7 +60,7 @@ The software is required to do the following tasks:
 * transmit/receive measured values
 * monitor the state of a push button
   
-To make the measurements, the *Sparkfun AHT20*, and the *Adafruit BMP280* libraries were used for the two sensors. To drive the display, the libraries *LiquidCrystalI2C* and *Adafruit SSD1306* were used. To control the transceiver, the *NRFLite* library was used.
+For the software of the Arduinos, C++ was a natural choice. To make the measurements, the *Sparkfun AHT20*, and the *Adafruit BMP280* libraries were used for the two sensors. To drive the display, the libraries *LiquidCrystalI2C* and *Adafruit SSD1306* were used. To control the transceiver, the *NRFLite* library was used.
 You can find the complete code for both the base station and the remote unit in my GitHub repository: [https://github.com/sdomoszlai13/weather-station](https://github.com/sdomoszlai13/weather-station).
   
 ### Choosing a Communication Protocol
