@@ -5,7 +5,7 @@ source "https://rubygems.org"
 #
 
 bundle exec jekyll serve
-bundle update github-pages
+
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
@@ -13,13 +13,14 @@ bundle update github-pages
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
 gem "architect", "~> 0.1.0"
 # To upgrade, run `bundle update github-pages`.
-gem "github-pages", group: :jekyll_plugins
+
 bundle install
 bundle update github-pages
 # If you have any plugins, put them here!
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
   gem 'jekyll-octicons'
+  gem 'github-pages'
 end
 
 gem "jekyll-github-metadata"
