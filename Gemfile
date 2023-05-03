@@ -3,7 +3,7 @@ source "https://rubygems.org"
 # When you want to use a different version, change it below, save the
 # file and run `bundle install`. Run Jekyll with `bundle exec`, like so:
 #
-bundle install
+
 bundle exec jekyll serve
 bundle update github-pages
 #
@@ -11,9 +11,11 @@ bundle update github-pages
 # Happy Jekylling!
 # gem "jekyll", "~> 4.0.0"
 # This is the default theme for new Jekyll sites. You may change this to anything you like.
-gem "architect", "~> 2.5"
+gem "architect", "~> 0.1.0"
 # To upgrade, run `bundle update github-pages`.
 gem "github-pages", group: :jekyll_plugins
+bundle install
+bundle update github-pages
 # If you have any plugins, put them here!
 group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12"
