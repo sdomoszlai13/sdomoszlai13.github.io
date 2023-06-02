@@ -1,1 +1,3 @@
+# Predicting Real Estate Prices with Machine Learning models
 
+If you're lucky, at some point in your life, you get the chance to purchase a property or even a house. However, here begins a painful journey of looking for your dream home and being shocked when taking a look at the price tag. When an acceptable and affordable home has been found despite the difficulties, there's still one important question: Is the price fair? If you ask the owner, it sure is. Now imagine there's a software that tells you just that. This answer is absolutely data-based and fairly objective. To do this, it's best to train a machine learning model.
