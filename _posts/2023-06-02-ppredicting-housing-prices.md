@@ -12,6 +12,9 @@ we're gonna let the models make predictions on housing data they've never seen b
 ![](/images/weather-station/finished-both.png "")
 
 
+![](/images/weather-station/finished-remote-unit-inside.png "The assembled remote unit")
+
+
 
 # **PREDICTING HOUSE PRICES**
 
