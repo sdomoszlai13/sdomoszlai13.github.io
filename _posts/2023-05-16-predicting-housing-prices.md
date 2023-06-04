@@ -16,6 +16,8 @@ we're gonna let the models make predictions on housing data they've never seen b
 
 ![](/images/predicting-housing-prices/sold.png "Planning to buy a house soon? Start by training a machine learning model!")
 
+The following section is a converted Jupyter notebook. For the original file, see my GitHub repo at [https://github.com/sdomoszlai13/predicting-housing-prices](https://github.com/sdomoszlai13/predicting-housing-prices).
+
 # **Predicting House Prices with ML in a Jupyter Notebook**
 
 **In this notebook, we are going to build a machine learning model that predicts prices of houses based on historical data.**
