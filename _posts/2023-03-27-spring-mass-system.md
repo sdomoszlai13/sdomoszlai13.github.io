@@ -1,7 +1,7 @@
 # Spring Mass System Simulator
 
 Today we're gonna take a look at solving the equations of motion for a spring mass system. Now, you may be asking: solving a what? Well, imagine you wanted to simulate the motion of a piece of elastic fabric hung up on a wall, or the motion of atoms in molecules (and believe me, sometimes you $do$ want to). Such systems can be described by spring mass systems. These are systems that contain multiple bodies with mass that are connected by springs. Of course, the connections can be arbitrary and the "stiffness" of the springs (the spring constant) can be different for every spring. There are also one or more fixtures we can tether the masses on, so they won't just enter free fall.
-You can find the complete code in my GitHub repository at [ttps://github.com/sdomoszlai13/spring-mass-system-simulator](https://github.com/sdomoszlai13/spring-mass-system-simulator).
+You can find the complete code in my GitHub repository at [https://github.com/sdomoszlai13/spring-mass-system-simulator](https://github.com/sdomoszlai13/spring-mass-system-simulator).
 <br>
 <br>
 The program we'll get to know runs a simulation of a system of fixtures, masses, and springs in two dimensions. Fixtures and masses can be set up with initial coordinates and initial velocities (not for fixtures, of course). After setting the desired temporal length and the number of time steps, the simulation is run and a plot is created with the fixtures, masses, and the masses' trajectories so we can see which way they went. There's also an option to save the trajectories to a file.
