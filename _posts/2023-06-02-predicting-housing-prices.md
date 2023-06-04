@@ -621,7 +621,7 @@ plt.show()
 
 
     
-![](predicting-house-prices_files/predicting-house-prices_13_0.png "Features of properties")
+![](predicting-house-prices_files/predicting-house-prices_13_0.png "Distribution of sale prices")
     
 
 
@@ -786,7 +786,7 @@ plt.show();
 
 
     
-![](/images/predicting-housing-prices/predicting-house-prices_28_0.png "Modified ("unskewed") sale price histogram)
+![](/images/predicting-housing-prices/predicting-house-prices_28_0.png "Modified ('unskewed') sale price histogram")
     
 
 
@@ -896,7 +896,7 @@ sns.despine(trim = True, left = True)
 
 
     
-![png](predicting-house-prices_files/predicting-house-prices_35_0.png)
+![](/images/predicting-housing-prices/predicting-house-prices_35_0.png "Missing data")
     
 
 
@@ -1027,7 +1027,7 @@ sns.despine(trim = True, left = True)
 
 
     
-![png](predicting-house-prices_files/predicting-house-prices_43_0.png)
+![](/images/predicting-housing-prices/predicting-house-prices_43_0.png "Distribution of features")
     
 
 
@@ -1099,7 +1099,7 @@ sns.despine(trim = True, left = True)
 
 
     
-![png](predicting-house-prices_files/predicting-house-prices_47_0.png)
+![](/images/predicting-housing-prices/predicting-house-prices_47_0.png "Distribution of features")
     
 
 
@@ -1459,7 +1459,7 @@ plt.show()
 
 
     
-![png](predicting-house-prices_files/predicting-house-prices_63_0.png)
+![](/images/predicting-housing-prices/predicting-house-prices_63_0.png "Distribution of sale prices")
     
 
 
@@ -1767,7 +1767,7 @@ plt.show()
 
 
     
-![png](predicting-house-prices_files/predicting-house-prices_81_0.png)
+![](/images/predicting-housing-prices/predicting-house-prices_81_0.png "Scores of models (indicator of predictive power)")
     
 
 
