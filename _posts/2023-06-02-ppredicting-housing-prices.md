@@ -9,7 +9,7 @@ Suppose you'd like to purchase a house in Ames, Iowa. It just so happens that th
 Nowadays, the most popular language used to work with machine learning models is **Python**. Python has a lot of great modules and libraries specifically developed for this and is really easy to use. The Python module **scikit-learn** is a comprehensive collection of different machine learning models. We'll train a few models and combine their estimates to get an even better result. First, we're gonna visualize the training data to get a feel for this particular data set. A few corrections to unrealistic or non-representative data points called outliers usually also need to be done at this point. Next, we'll train the models using the training set. This step can be repeated when specific parameters of the models called 'hyperparameters' were tweaked to yield better results. However, for the sake of simplicity and as a combination of models is used to make predictions, this step will be skipped in this tutorial. In the last step, 
 we're gonna let the models make predictions on housing data they've never seen before but for which the 'right solution' (real sale price) is available to us. This way, we can evaluate the performance of our trained models.
 
-![](/images/weather-station/.png "")
+![](/images/weather-station/finished-both.png "")
 
 
 
@@ -555,7 +555,7 @@ plt.show()
 
 
     
-![png](predicting-house-prices_files/predicting-house-prices_8_0.png)
+![](predicting-house-prices_files/predicting-house-prices_8_0.png "")
     
 
 
