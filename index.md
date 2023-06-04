@@ -1,4 +1,7 @@
-# The this-is-exciting-let's-take-a-look-at-it-blog
+Hello and welcome to my blog! You can find posts about a selection of my projects below.
 
-Hello and welcome to my blog! You can find a selection of my projects below. This projects were created by me in my free time and may even be of some use for others.
-As a passionate software developer, physicist, and microelectronics geek, I'm constantly trying to combine interesting and useful achievments of these fields in new ways. Lean back, relax and enjoy some brain gymnastics!
+# The that-looks-exciting-let's-explore-it blog
+
+Whenever I find something exciting in the world of software development, I usually create a small project to try it out. The result of these explorations are summarized in the blog posts about projects below. There are also some introductory blog posts to tools or concepts I considered worth sharing.
+
+As a passionate software developer, physicist, and microelectronics geek, I'm constantly looking to combine interesting and useful achievments of these fields in new ways. Lean back, relax and enjoy some brain gymnastics!
