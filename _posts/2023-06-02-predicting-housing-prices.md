@@ -555,7 +555,7 @@ plt.show()
 
 
     
-![](/images/predicting-housing-prices/predicting-house-prices_8_0.png "Sale Price Distribution")
+![](/images/predicting-housing-prices/predicting-house-prices_8_0.png "Sale price histogram")
     
 
 
@@ -636,7 +636,7 @@ sns.heatmap(corr_matrix, vmax = 0.9, cmap = "Blues", square = True);
 
 
     
-![png](predicting-house-prices_files/predicting-house-prices_15_0.png)
+![](/images/predicting-housing-prices/predicting-house-prices_15_0.png "Correlation matrix of features")
     
 
 
@@ -654,7 +654,7 @@ fig.axis(ymin = 0, ymax = 800000);
 
 
     
-![png](predicting-house-prices_files/predicting-house-prices_17_0.png)
+![](/images/predicting-housing-prices/predicting-house-prices_17_0.png "Correlation between overall quality and sale price")
     
 
 
@@ -671,7 +671,7 @@ plt.xticks(rotation = 45);
 
 
     
-![png](predicting-house-prices_files/predicting-house-prices_18_0.png)
+![](/images/predicting-housing-prices/predicting-house-prices_18_0.png "Correlation between age and sale price")
     
 
 
@@ -683,7 +683,7 @@ data.plot.scatter(x = "TotalBsmtSF", y = "SalePrice", alpha = 0.3, ylim = (0, 80
 
 
     
-![png](predicting-house-prices_files/predicting-house-prices_19_0.png)
+![](/images/predicting-housing-prices/predicting-house-prices_19_0.png "Correlation between basement area and sale price")
     
 
 
@@ -695,7 +695,7 @@ data.plot.scatter(x = "LotArea", y = "SalePrice", alpha = 0.3, ylim = (0, 800000
 
 
     
-![png](predicting-house-prices_files/predicting-house-prices_20_0.png)
+![](/images/predicting-housing-prices/predicting-house-prices_20_0.png "Correlation between lot area and sale price")
     
 
 
@@ -707,7 +707,7 @@ data.plot.scatter(x = "GrLivArea", y = "SalePrice", alpha = 0.3, ylim = (0, 8000
 
 
     
-![png](predicting-house-prices_files/predicting-house-prices_21_0.png)
+![](/images/predicting-housing-prices/predicting-house-prices_21_0.png "Correlation between living area and sale price")
     
 
 
@@ -749,7 +749,7 @@ plt.show()
 
 
     
-![png](predicting-house-prices_files/predicting-house-prices_25_0.png)
+![](/images/predicting-housing-prices/predicting-house-prices_25_0.png "Sale price histogram")
     
 
 
@@ -786,7 +786,7 @@ plt.show();
 
 
     
-![png](predicting-house-prices_files/predicting-house-prices_28_0.png)
+![](/images/predicting-housing-prices/predicting-house-prices_28_0.png "Modified ("unskewed") sale price histogram)
     
 
 
