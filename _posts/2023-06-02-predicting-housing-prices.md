@@ -9,29 +9,27 @@ Suppose you'd like to purchase a house in Ames, Iowa. It just so happens that th
 Nowadays, the most popular language used to work with machine learning models is **Python**. Python has a lot of great modules and libraries specifically developed for this and is really easy to use. The Python module **scikit-learn** is a comprehensive collection of different machine learning models. We'll train a few models and combine their estimates to get an even better result. First, we're gonna visualize the training data to get a feel for this particular data set. A few corrections to unrealistic or non-representative data points called outliers usually also need to be done at this point. Next, we'll train the models using the training set. This step can be repeated when specific parameters of the models called 'hyperparameters' were tweaked to yield better results. However, for the sake of simplicity and as a combination of models is used to make predictions, this step will be skipped in this tutorial. In the last step, 
 we're gonna let the models make predictions on housing data they've never seen before but for which the 'right solution' (real sale price) is available to us. This way, we can evaluate the performance of our trained models.
 
-![](/images/weather-station/finished-both.png "hello")
 
 
-
-# **PREDICTING HOUSE PRICES**
+# **Predicting House Prices with ML in a Jupyter Notebook**
 
 **In this notebook, we are going to build a machine learning model that predicts prices of houses based on historical data.**
 
 ## Data: ##
-### The dataset we're gonna work with is the Ames Housing dataset. It contains 80 attributes for 2,930 properties in Ames, Iowa and was completed in 2011. The attributes include number and type of rooms, location specific data and special features of the property (pool, fireplace etc.). Each row in the dataset represents a single house. ###
+The dataset we're gonna work with is the Ames Housing dataset. It contains 80 attributes for 2,930 properties in Ames, Iowa and was completed in 2011. The attributes include number and type of rooms, location specific data and special features of the property (pool, fireplace etc.). Each row in the dataset represents a single house.
 
 ## Goal: ##
-### Predict sale price of a house as accurately as possible, based on data about the house features and location. ###
+Predict sale price of a house as accurately as possible, based on data about the house features and location. ###
 
 ## Models: ##
-### Based on finished notebooks available on Kaggle, it seems that a stacked model can produce even more accurate results than tuning hyperparameters of a single model. In this notebook we'll follow this approach.
-### A combination of the following models will be used for superior performance: LightGBM Regressor, XGBoost Regressor, Epsilon-Support Vector Regressor, Ridge, Random Forest Regressor, Gradient Boosting Regressor.
+Based on finished notebooks available on Kaggle, it seems that a stacked model can produce even more accurate results than tuning hyperparameters of a single model. In this notebook we'll follow this approach.
+A combination of the following models will be used for superior performance: LightGBM Regressor, XGBoost Regressor, Epsilon-Support Vector Regressor, Ridge, Random Forest Regressor, Gradient Boosting Regressor.
 
 ## Evaluation: ##
-### The evaluation metric is the Root-Mean-Squared-Error. The smaller the error, the better. ###
+The evaluation metric is the Root-Mean-Squared-Error. The smaller the error, the better.
 
 ## Result: ##
-### The result is a well-trained, blended machine learning model that predicts prices in the test set with a Root-Mean-Squared-Error of about 7.5%. ###
+The result is a well-trained, blended machine learning model that predicts prices in the test set with a Root-Mean-Squared-Error of about 7.5%.
 
 
 
