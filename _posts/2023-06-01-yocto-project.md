@@ -6,5 +6,10 @@ Though some say Moore's law is already dead, this doesn't mean the rapid develop
 
 In this article, we'll be focusing on the lower end of the software complexity spectrum: Embedded systems. 
 
+## 1. Embedded Linux
+
+## 2. Target Devices
+
+## 3. Example: Custom Linux distribution for STM32
 
 Every now and then come over ( anyone?)
