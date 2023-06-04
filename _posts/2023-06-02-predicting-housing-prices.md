@@ -1,4 +1,4 @@
-# A gentle introduction to Machine Learning - Predicting Real Estate Prices
+# A Gentle Introduction to Machine Learning - Predicting Real Estate Prices
 
 If you're lucky, at some point in your life, you get the chance to purchase a property or even a house. However, here begins a painful journey of looking for your dream home and being shocked when taking a look at the price tag. When an acceptable and affordable home has been found despite the difficulties, there's still one important question: Is the price fair? If you ask the owner, it sure is. Now imagine there's a software that tells you just that. This answer is absolutely data-based and fairly objective. To do this, it's best to train a machine learning model.
 
@@ -10,12 +10,6 @@ Nowadays, the most popular language used to work with machine learning models is
 we're gonna let the models make predictions on housing data they've never seen before but for which the 'right solution' (real sale price) is available to us. This way, we can evaluate the performance of our trained models.
 
 ![](/images/weather-station/finished-both.png "hello")
-
-![](/images/weather-station/finished-both.png "hello")
-
-![](/images/predicting-housing-prices/predicting-house-prices_8_0.png "")
-
-![](/images/weather-station/finished-remote-unit-inside.png "The assembled remote unit")
 
 
 
@@ -561,7 +555,7 @@ plt.show()
 
 
     
-![](predicting-house-prices_files/predicting-house-prices_8_0.png "")
+![](/images/predicting-housing-prices/predicting-house-prices_8_0.png "Sale Price Distribution")
     
 
 
@@ -627,7 +621,7 @@ plt.show()
 
 
     
-![png](predicting-house-prices_files/predicting-house-prices_13_0.png)
+![](predicting-house-prices_files/predicting-house-prices_13_0.png "Features of properties")
     
 
 
