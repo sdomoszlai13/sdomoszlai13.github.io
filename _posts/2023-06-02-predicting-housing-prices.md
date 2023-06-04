@@ -24,7 +24,7 @@ we're gonna let the models make predictions on housing data they've never seen b
 The dataset we're gonna work with is the Ames Housing dataset. It contains 80 attributes for 2,930 properties in Ames, Iowa and was completed in 2011. The attributes include number and type of rooms, location specific data and special features of the property (pool, fireplace etc.). Each row in the dataset represents a single house.
 
 ## Goal: ##
-Predict sale price of a house as accurately as possible, based on data about the house features and location. ###
+Predict sale price of a house as accurately as possible, based on data about the house features and location.
 
 ## Models: ##
 Based on finished notebooks available on Kaggle, it seems that a stacked model can produce even more accurate results than tuning hyperparameters of a single model. In this notebook we'll follow this approach.
