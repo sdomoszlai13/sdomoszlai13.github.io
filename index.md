@@ -3,7 +3,7 @@ Hello and welcome to my blog! You can find posts about a selection of my project
 
 # The That-Looks-Exciting-Let's-Explore-it Blog
 
-![](/images/cover.jpg "")
+![](/images/cover.jpg "Exploring an STM32 board")
 
 Whenever I find something exciting in the world of software development, I usually create a small project to learn more about it. The result of these explorations are summarized in the blog posts about projects below. There are also some introductory blog posts to tools or concepts I considered worth sharing.
 
