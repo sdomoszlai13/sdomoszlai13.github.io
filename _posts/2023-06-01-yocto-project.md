@@ -39,6 +39,7 @@ Before getting started, it's important to be familiar with the below concepts.
 * Metadata: folders containing auxiliary files like configuration files or user-supplied recipe files
 * Board Support Package (BSP): layer with board-specific info on how to build image
 * BitBake: component used by the OpenEmbedded build system to build images
+* Image: output of the build process, bootable
 * Poky: reference distribution, serves as an example
 
 
