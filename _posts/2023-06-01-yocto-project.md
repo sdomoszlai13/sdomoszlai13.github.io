@@ -5,6 +5,7 @@ The spectrum of software complexity and abstraction level nowadays is reeeally w
 Though some say Moore's law is already dead, this doesn't mean the rapid development of computer technology and with it miniaturization doesn't continue at an extraordinary speed. In recent years, this has lead to unprecedented possibilities in the world of embedded systems. In 2007, the STM32 platform was launched, and in 2012, the Raspberry Pi was born. Since then, credit-card-sized computers have sprang up like mushrooms. The minimum system requirements for running Linux are nowadays satisfied by almost every microchip that cost more than 10 USD. Linux has been the go-to operating system for supercomputer architects for years. Linux has therefore become a software tool that is used from IoT devices and routers through laptop PCs and servers all the way up to supercomputers.
 It's Linux, stupid!
 
+![](/images/yocto-project/tux.png "Tux, the Linux penguin")
 
 ## 1. Embedded Linux
 
