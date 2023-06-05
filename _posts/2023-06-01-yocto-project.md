@@ -30,7 +30,7 @@ In this article, we'll be focusing on the lower end of the software complexity s
 
 Linux is a GPOS. Thus, only the categories 'bare metal' and 'RTOS' aren't covered by Linux (yet?). A simple way to run a Linux distro on a single-board computer (SBC) is to flash an image of the distro onto an SD card and boot the OS from it. However, in this case usually there are a lot of system components that aren't needed for the specific application and can be considered bloatware. These can be removed manually once the system is botted, but do you really wanna do this in serial production? Imagine a software that lets you select exactly which system components and even which drivers you'd like to use and *creates* this customized Linux distro for you. Look no further: This is the Yocto Project.
 
-## 2. The Yocto Project
+## 2. Yocto Project Basics
 
 Before getting started, it's important to be familiar with the below concepts.
 
@@ -42,12 +42,14 @@ Before getting started, it's important to be familiar with the below concepts.
 * Image: output of the build process, bootable
 * Poky: reference distribution, serves as an example
 
-
+In short, the Yocto Project allows us to gather our chosen recipes into layers and build our custom image for a specific board with the help of the corresponding board support package. For the build process, we use BitBake. To see how a finished image looks like, we can take a look at Poky (not part of this tutorial).
 
 ## 3. Target Devices
 
-Embedded Linux distros are usually run SBCs like a Raspberry Pi or an STM32. In this tutorial, we'll be using an STM32
+Embedded Linux distros are usually run SBCs like a Raspberry Pi or an STM32. There are a lot of devices that support slim Linux distros like the well-known Raspberr Pis, but also the Swiss-made Toradex Apalis, Verdin or Colibri family of SBCs or a whole palette of 96boards SBC editions. Usually, these devices come with 500 MB-4 GB of RAM, 1-16 GB flash memory and a clock speed of 200 MHz-2 GHz, depending on the intended use. Though a wide variety of these boards is available, it's good to consider popularity as this usually correlates with the amount of helpful information available online.
 
-## 4. Example: Custom Linux distribution for STM32
+In this tutorial, we'll be using an STM32MP157C to run the image we're gonna build.
+
+## 4. Example: Custom Linux distribution for the STM32157C
 
 Every now and then come over ( anyone?)
