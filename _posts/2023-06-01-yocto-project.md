@@ -27,13 +27,16 @@ In this article, we'll be focusing on the lower end of the software complexity s
   - usually portable
 
 
-Linux is a GPOS. Thus, only the categories 'bare metal' and 'RTOS' aren't covered by Linux (yet?).
+Linux is a GPOS. Thus, only the categories 'bare metal' and 'RTOS' aren't covered by Linux (yet?). A simple way to run a Linux distro on a single-board computer (SBC) is to flash an image of the distro onto an SD card and boot the OS from it. However, in this case usually there are a lot of system components that aren't needed for the specific application and can be considered bloatware. These can be removed manually once the system is botted, but do you really wanna do this in serial production? Imagine a software that lets you select exactly which system components and even which drivers you'd like to use and *creates* this customized Linux distro for you. Look no further: This is the Yocto Project.
 
-Embedded Linux distros are usually run on single-board computers (SBC) like a Raspberry Pi or an STM32. 
+## 2. The Yocto Project
 
 
-## 2. Target Devices
 
-## 3. Example: Custom Linux distribution for STM32
+## 3. Target Devices
+
+Embedded Linux distros are usually run SBCs like a Raspberry Pi or an STM32. In this tutorial, we'll be using an STM32
+
+## 4. Example: Custom Linux distribution for STM32
 
 Every now and then come over ( anyone?)
