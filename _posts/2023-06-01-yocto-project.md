@@ -36,6 +36,7 @@ Before getting started, it's important to be familiar with the below concepts.
 
 * Recipe: instructions to build one or more packages
 * Layer: related set of instructions for the OpenEmbedded System Build. They can override previous instructions, settings, or even layers and are used to logically separate build components
+* Metadata: folders containing auxiliary files like configuration files or user-supplied recipe files
 * Board Support Package (BSP): layer with board-specific info on how to build image
 * BitBake: component used by the OpenEmbedded build system to build images
 * Poky: reference distribution, serves as an example
