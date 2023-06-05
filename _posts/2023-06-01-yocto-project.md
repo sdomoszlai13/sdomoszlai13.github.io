@@ -11,18 +11,18 @@ It's Linux, stupid!
 
 In this article, we'll be focusing on the lower end of the software complexity spectrum: Embedded systems. The software run by these devices can be divided in the following three categories:
 
-* bare metal:
+* Bare Metal:
   - little to no software overhead
   - strict timing
   - high control of hardware
   - very little power consumption
-* real-time operating system (RTOS):
+* Real-Time Operating System (RTOS):
   - scheduler overhead
   - multithreading
   - high control of hardware
   - libraries
   - 
-* general purpose operating system (GPOS):
+* General Purpose Operating System (GPOS):
   - less control of hardware
   - singificant overhead (background tasks, memory management...)
   - usually portable
@@ -31,6 +31,14 @@ In this article, we'll be focusing on the lower end of the software complexity s
 Linux is a GPOS. Thus, only the categories 'bare metal' and 'RTOS' aren't covered by Linux (yet?). A simple way to run a Linux distro on a single-board computer (SBC) is to flash an image of the distro onto an SD card and boot the OS from it. However, in this case usually there are a lot of system components that aren't needed for the specific application and can be considered bloatware. These can be removed manually once the system is botted, but do you really wanna do this in serial production? Imagine a software that lets you select exactly which system components and even which drivers you'd like to use and *creates* this customized Linux distro for you. Look no further: This is the Yocto Project.
 
 ## 2. The Yocto Project
+
+Before getting started, it's important to be familiar with the below concepts.
+
+* Recipe: instructions to build one or more packages
+* Layer: related set of instructions for the OpenEmbedded System Build. They can override previous instructions, settings, or even layers and are used to logically separate build components
+* Board Support Package (BSP): layer with board-specific info on how to build image
+* BitBake: component used by the OpenEmbedded build system to build images
+* Poky: reference distribution, serves as an example
 
 
 
