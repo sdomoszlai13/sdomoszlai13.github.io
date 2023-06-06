@@ -50,7 +50,9 @@ Embedded Linux distros are usually run SBCs like a Raspberry Pi or an STM32. The
 
 In this tutorial, we'll be using an STM32MP157C to run the image we're gonna build.
 
-## 4. Example: Custom Linux distribution for the STM32157C
+
+[comment]: <> (## 4. Example: Custom Linux distribution for the STM32157C)
+
 
 
 
