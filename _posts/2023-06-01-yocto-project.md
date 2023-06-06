@@ -52,9 +52,4 @@ In this tutorial, we'll be using an STM32MP157C to run the image we're gonna bui
 
 
 [comment]: <> (## 4. Example: Custom Linux distribution for the STM32157C)
-
-
-
-
-
-Every now and then come over ( anyone?)
+[comment]: <> (Every now and then come over ( anyone?))
