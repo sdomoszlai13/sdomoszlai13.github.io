@@ -42,7 +42,7 @@ Before getting started, it's important to be familiar with the below concepts.
 * Image: output of the build process, bootable
 * Poky: reference distribution, serves as an example
 
-In short, the Yocto Project allows us to gather our chosen recipes into layers and build our custom image for a specific board with the help of the corresponding board support package. For the build process, we use BitBake. To see how a finished image looks like, we can take a look at Poky (not part of this tutorial).
+In short, the Yocto Project allows us to gather our chosen recipes into layers and build our custom image for a specific board with the help of the corresponding board support package. For the build process, we use BitBake. One huge advantage of the Yocto Project compared to similar software is that if an image has been built and you want to rebuild it after a modification, only the modified files need to be rebuilt which makes the process really fast. To see how a finished image looks like, we can take a look at Poky (not part of this tutorial).
 
 ## 3. Target Devices
 
@@ -51,5 +51,8 @@ Embedded Linux distros are usually run SBCs like a Raspberry Pi or an STM32. The
 In this tutorial, we'll be using an STM32MP157C to run the image we're gonna build.
 
 ## 4. Example: Custom Linux distribution for the STM32157C
+
+
+
 
 Every now and then come over ( anyone?)
