@@ -1,1 +1,3 @@
 # Trial and no Error: Testing with Google Test
+
+In the age of StackOverflow, ChatGPT etc. the casual software developer can be overcome by the feeling that in a few years time, software development will be mainly done by computers and the only people needed in the world of programming will be the experts developing the tools that to software development themselves. Regardless of whether the industry will be taken over by AI software developers, there's one important step that will always require human supervision: testing the software.
