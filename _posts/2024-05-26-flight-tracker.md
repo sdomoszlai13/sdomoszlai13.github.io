@@ -35,3 +35,21 @@ Certainly! All you need to get is
 As for the antenna and the SDR, you probably get the most bang for you buck if you go with [this bundle](https://www.rtl-sdr.com/product/rtl-sdr-blog-v4-r828d-rtl2832u-1ppm-tcxo-sma-software-defined-radio-with-dipole-antenna/). As for the PC, the recommended choice a [Raspberry Pi](https://www.raspberrypi.com/) (get at least the Pi 4 with 4 GB of RAM).
 
 The antenna is connected to the SDR and the SDR to the Pi.
+
+### Hardware
+
+### Software
+
+#### The decoder
+
+#### The flight visualizer
+
+#### The database
+
+As for the database, [InfluxDB](https://www.influxdata.com/) is well-suited for our type of data called *time series data*, meaning data that comes in regular or irregular time intervals and stored with a time stamp. IoT devices and sensors tipically generate data of this kind.
+
+Compared to a relational database system like [PostgreSQL](https://www.postgresql.org/), a time series database has some additional features like downsampling or using retention policies. InfluxDB also has a free plan for which no registration is required.
+
+#### The data visualizer
+
+To visualize the collected raw data, [Grafana](https://grafana.com/) is used.
