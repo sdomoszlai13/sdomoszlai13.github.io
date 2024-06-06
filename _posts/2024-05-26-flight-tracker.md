@@ -128,4 +128,4 @@ Compared to a relational database system like [PostgreSQL](https://www.postgresq
 
 #### The data visualizer
 
-To visualize the collected raw data, [Grafana](https://grafana.com/) is used.
+To visualize the collected raw data, [Grafana](https://grafana.com/) is used. This is a simple to use, versatile tool for data visualization used in the industry for monitoring and data analysis.
