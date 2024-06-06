@@ -40,7 +40,83 @@ The antenna is connected to the SDR and the SDR to the Pi.
 
 ### Software
 
-#### The decoder
+To make life easier, the whole flight tracker is set up in a [Docker Compose](https://docs.docker.com/compose/) file. This helps isolating all the software components from programs running on the host machine as well as avoiding potential dependency conflicts. The Docker Compose file contains the following components:
+
+* Decoder & feeder
+* Flight visualizer
+* Database
+* Data visualizer
+
+These components are explained in detail below. You can access the complete Docker Compose file in the [Flight Tracker](https://github.com/sdomoszlai13/flight-tracker) repo.
+
+#### The decoder & feeder
+
+For this, the `docker-adsb-ultrafeeder` image from SDR Enthusiasts is used. Note that the `telegraf` tag is required to enable data feeding to the database.
+
+```docker
+  ultrafeeder:
+    image: ghcr.io/sdr-enthusiasts/docker-adsb-ultrafeeder:telegraf
+    container_name: ultrafeeder
+    hostname: ultrafeeder
+    tty: true
+    restart: unless-stopped
+    device_cgroup_rules:
+      - 'c 189:* rwm'
+    ports:
+      - 8080:80
+    environment:
+      - LOGLEVEL=error
+      - TZ=${FEEDER_TZ}
+
+      # SDR-related parameters:
+      - READSB_DEVICE_TYPE=rtlsdr
+      - READSB_RTLSDR_DEVICE=${ADSB_SDR_SERIAL}
+      - READSB_RTLSDR_PPM=${ADSB_SDR_PPM}
+
+      # readsb/decoder parameters:
+      - READSB_LAT=${FEEDER_LAT}
+      - READSB_LON=${FEEDER_LONG}
+      - READSB_ALT=${FEEDER_ALT_M}m
+      - READSB_GAIN=${ADSB_SDR_GAIN}
+      - READSB_RX_LOCATION_ACCURACY=2
+      - READSB_STATS_RANGE=true
+
+      # Sources and aggregator connections
+      - ULTRAFEEDER_CONFIG=
+          adsb,dump978,30978,uat_in;
+          mlathub,piaware,30105,beast_in;
+      - UUID=${ULTRAFEEDER_UUID}
+      - MLAT_USER=${FEEDER_NAME}
+      - READSB_FORWARD_MLAT_SBS=true
+
+      # TAR1090 (map web page) parameters:
+      - UPDATE_TAR1090=true
+      - TAR1090_DEFAULTCENTERLAT=${FEEDER_LAT}
+      - TAR1090_DEFAULTCENTERLON=${FEEDER_LONG}
+      - TAR1090_MESSAGERATEINTITLE=true
+      - TAR1090_PAGETITLE=${FEEDER_NAME}
+      - TAR1090_PLANECOUNTINTITLE=true
+      - TAR1090_ENABLE_AC_DB=true
+      - TAR1090_FLIGHTAWARELINKS=true
+      - HEYWHATSTHAT_PANORAMA_ID=${FEEDER_HEYWHATSTHAT_ID}
+      - HEYWHATSTHAT_ALTS=${FEEDER_HEYWHATSTHAT_ALTS}
+      - TAR1090_SITESHOW=true
+      - TAR1090_RANGE_OUTLINE_COLORED_BY_ALTITUDE=true
+      - TAR1090_RANGE_OUTLINE_WIDTH=2.0
+      - TAR1090_RANGERINGSDISTANCES=50,100,150,200
+      - TAR1090_RANGERINGSCOLORS='#1A237E','#0D47A1','#42A5F5','#64B5F6'
+      - TAR1090_USEROUTEAPI=true
+
+      # GRAPHS1090 (decoder and system status web page) parameters:
+      - GRAPHS1090_DARKMODE=true
+
+      # InfluxDB config
+      - INFLUXDBV2_URL=http://influxdb:8086
+      - INFLUXDBV2_BUCKET=ultrafeeder
+      - INFLUXDBV2_ORG=ultrafeeder
+      - INFLUXDBV2_TOKEN=${INFLUXDB_ADMIN_TOKEN}
+
+```
 
 #### The flight visualizer
 
