@@ -174,6 +174,6 @@ I've been running this setup on a Pi 4 for over a month now. The antenna is loca
 
 * writing the data received to a database (with Telegraf in this case) has a significant effect on processor and memory usage. As expected, during the day the number of airborne aircraft is significantly higher than at night. This also means higher data rates and therefore the time of the day correlates with writes.
 
-![](/images/flight-tracker/writes.png "DIY flight tracker map")
+![](/images/flight-tracker/writes.png "Writes over time")
 
 Using Grafana, many more interesting insights can be gained. Try & explore - *(not even) the sky's the limit!*
