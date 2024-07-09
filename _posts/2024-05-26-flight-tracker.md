@@ -10,7 +10,7 @@ As with nearly everyhting in the 21st century, turns out there's also an app as 
 
 You can even click on any aircraft to see some details: What type of aircraft is flying there? Where is it heading to? How long does its flight take? If you pay a subscription fee, you can even see live meteorological data, the aircraft's age etc. If you now look up in the sky, determine the rough heading of an aircraft you see and find it based on the heading in a flight tracker, you can tell where the flight started and where it will end. Try it!
 
-![](/images/flight-tracker/miami-a380.png "Miami airport with an approaching A380 from London")
+![](/images/flight-tracker/miami-a380.png "Miami airport with an approaching Airbus A380 from London")
 
 Pretty cool. But how does this work?
 
@@ -37,6 +37,8 @@ As for the antenna and the SDR, you probably get the most bang for you buck if y
 The antenna is connected to the SDR and the SDR to the Pi.
 
 ### Hardware
+
+The hardware setup is really simple: connect the dipole antenna (length: 13-14 cm in total) to the SDR dongle and plug the dongle into the Pi. Make sure the antenna is aligned vertically (as the signal emitted by the aircraft is vertically polarized).
 
 ### Software
 
@@ -118,14 +120,60 @@ For this, the `docker-adsb-ultrafeeder` image from SDR Enthusiasts is used. Note
 
 ```
 
+The variables used in the above Docker Compose file are defined in a file called *.env*. Here's a sample .env file:
+
+```python
+FEEDER_ALT_FT=YourAltitudeInFt
+FEEDER_ALT_M=YourAltitudeInM
+FEEDER_LAT=YourLatitude
+FEEDER_LONG=YourLongitude
+FEEDER_TZ=Europe/Zurich
+FEEDER_NAME=Flight-Tracker
+ADSB_SDR_SERIAL=1090
+ADSB_SDR_GAIN=autogain
+ADSB_SDR_PPM=
+ULTRAFEEDER_UUID=YourUltraFeederUUID
+FEEDER_HEYWHATSTHAT_ID=YourHeyWhatsThatID
+FEEDER_HEYWHATSTHAT_ALTS=3000,12000
+FR24_SHARING_KEY=YourFR24SharingKey
+INFLUXDB_USER=flight-tracker
+INFLUXDB_PASSWORD=YourFancySecurePassword
+INFLUXDB_ADMIN_TOKEN=YourInfluxDBToken
+```
+
 #### The flight visualizer
+
+To visualize the real-time tracked flights on a map, one can use e.g. TAR1090. This tool gives a visualizaton of our data similar to the professional flight trackers like FlightRadar24. See for yourself:
+
+![](/images/flight-tracker/own-tracker.png "DIY flight tracker map")
 
 #### The database
 
-As for the database, [InfluxDB](https://www.influxdata.com/) is well-suited for our type of data called *time series data*, meaning data that comes in regular or irregular time intervals and stored with a time stamp. IoT devices and sensors tipically generate data of this kind.
+As for the database, [InfluxDB](https://www.influxdata.com/) is well-suited for our type of data called *time series data*, referring to data that comes in regular or irregular time intervals and stored with a time stamp. IoT devices and sensors tipically generate data of this kind.
 
 Compared to a relational database system like [PostgreSQL](https://www.postgresql.org/), a time series database has some additional features like downsampling or using retention policies. InfluxDB also has a free plan for which no registration is required.
 
+![](/images/flight-tracker/influx-db.png "Visualization of the *adsb_icao* field of the *readsb_stats* measurement in InfluxDB's native data explorer")
+
 #### The data visualizer
 
-To visualize the collected raw data, [Grafana](https://grafana.com/) is used. This is a simple to use, versatile tool for data visualization used in the industry for monitoring and data analysis.
+To visualize the collected raw data, [Grafana](https://grafana.com/) is used. This is a simple to use, versatile tool for data visualization used in the industry for monitoring and data analysis. Visualizations can be created easily with SQL queries.
+
+
+## Observations
+
+I've been running this setup on a Pi 4 for over a month now. The antenna is located several meters away from the nearest window and therefore, coverage isn't great. My observations so far:
+
+* on average, about 6 aircraft are detected simultaneously
+
+![](/images/flight-tracker/no-tracked-flights.png "Number of tracked flights over time")
+
+* terrain (mountains) has a significant effect on the coverage
+
+* even with a simple dipole antenna placed inside a concrete building, aircraft that are 60-70 km away can be detected
+
+* writing the data received to a database (with Telegraf in this case) has a significant effect on processor and memory usage. As expected, during the day the number of airborne aircraft is significantly higher than at night. This also means higher data rates and therefore the time of the day correlates with writes.
+
+![](/images/flight-tracker/writes.png "DIY flight tracker map")
+
+Using Grafana, many more interesting insights can be gained. Try & explore - *(not even) the sky's the limit!*
